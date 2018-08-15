@@ -5,9 +5,9 @@
   <subtitle>将一个大问题分解为若干小问题，然后一个一个解决</subtitle>
   <link href="/atom.xml" rel="self"/>
   
-  <link href="http://yoursite.com/"/>
+  <link href="http://qbqb.pro/"/>
   <updated>2018-08-15T05:45:30.332Z</updated>
-  <id>http://yoursite.com/</id>
+  <id>http://qbqb.pro/</id>
   
   <author>
     <name>lqqb</name>
@@ -18,8 +18,8 @@
   
   <entry>
     <title>markdown语法测试</title>
-    <link href="http://yoursite.com/2018/08/14/%E6%88%91%E7%9A%84%E4%B8%96%E7%95%8C/"/>
-    <id>http://yoursite.com/2018/08/14/我的世界/</id>
+    <link href="http://qbqb.pro/2018/08/14/%E6%88%91%E7%9A%84%E4%B8%96%E7%95%8C/"/>
+    <id>http://qbqb.pro/2018/08/14/我的世界/</id>
     <published>2018-08-14T02:21:10.000Z</published>
     <updated>2018-08-15T05:45:30.332Z</updated>
     
@@ -32,16 +32,16 @@
     </summary>
     
     
-      <category term="Hexo" scheme="http://yoursite.com/tags/Hexo/"/>
+      <category term="Hexo" scheme="http://qbqb.pro/tags/Hexo/"/>
     
-      <category term="markdown" scheme="http://yoursite.com/tags/markdown/"/>
+      <category term="markdown" scheme="http://qbqb.pro/tags/markdown/"/>
     
   </entry>
   
   <entry>
     <title>Hello World</title>
-    <link href="http://yoursite.com/2018/08/14/hello-world/"/>
-    <id>http://yoursite.com/2018/08/14/hello-world/</id>
+    <link href="http://qbqb.pro/2018/08/14/hello-world/"/>
+    <id>http://qbqb.pro/2018/08/14/hello-world/</id>
     <published>2018-08-14T01:52:20.408Z</published>
     <updated>2018-08-14T08:02:26.186Z</updated>
     
@@ -54,7 +54,7 @@
     </summary>
     
     
-      <category term="Hexo" scheme="http://yoursite.com/tags/Hexo/"/>
+      <category term="Hexo" scheme="http://qbqb.pro/tags/Hexo/"/>
     
   </entry>
   
