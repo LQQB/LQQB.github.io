@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://qbqb.pro/"/>
-  <updated>2018-08-15T05:45:30.332Z</updated>
+  <updated>2018-08-16T13:28:45.665Z</updated>
   <id>http://qbqb.pro/</id>
   
   <author>
@@ -15,6 +15,30 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>第一篇博客，该写点什么~</title>
+    <link href="http://qbqb.pro/2018/08/16/first/"/>
+    <id>http://qbqb.pro/2018/08/16/first/</id>
+    <published>2018-08-16T12:00:28.000Z</published>
+    <updated>2018-08-16T13:28:45.665Z</updated>
+    
+    <content type="html"><![CDATA[<a id="more"></a><p>这是我在这个网站写的<strong>第一篇博客</strong>，不知到写点什么好， emmmmm~  一个人如果做的东西没有特点就很难得到别人的喜欢，我是一个比较愚钝的人，踩过很多坑，努力填了很多坑，同时也认识到了自己的不足，这是一个用来记录我学习踩坑的地方。</p><h4 id="在这里送上我最喜欢的两句话"><a href="#在这里送上我最喜欢的两句话" class="headerlink" title="在这里送上我最喜欢的两句话"></a>在这里送上我最喜欢的两句话</h4><blockquote><p>我们使用时间的方式就是我们塑造自己的方式。</p></blockquote><blockquote><p>我们的人生是因为有爱，才突显了光；是因为有消逝，所以存在才会有意义。</p></blockquote>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
+&lt;p&gt;这是我在这个网站写的&lt;strong&gt;第一篇博客&lt;/strong&gt;，不知到写点什么好， emmmmm~  一个人如果做的东西没有特点就很难得到别人的喜欢，我是一个比较愚钝的人，踩过很多坑，努力填了很多坑，同时也认识到了自己的不足，这是一个用
+      
+    
+    </summary>
+    
+    
+      <category term="记录" scheme="http://qbqb.pro/tags/%E8%AE%B0%E5%BD%95/"/>
+    
+  </entry>
   
   <entry>
     <title>markdown语法测试</title>
@@ -35,26 +59,6 @@
       <category term="Hexo" scheme="http://qbqb.pro/tags/Hexo/"/>
     
       <category term="markdown" scheme="http://qbqb.pro/tags/markdown/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Hello World</title>
-    <link href="http://qbqb.pro/2018/08/14/hello-world/"/>
-    <id>http://qbqb.pro/2018/08/14/hello-world/</id>
-    <published>2018-08-14T01:52:20.408Z</published>
-    <updated>2018-08-14T08:02:26.186Z</updated>
-    
-    <content type="html"><![CDATA[<p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. <a id="more"></a>Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p><h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p><h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p><h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p><h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;Welcome to &lt;a href=&quot;https://hexo.io/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Hexo&lt;/a&gt;! This is your very first post.&lt;/p&gt;
-    
-    </summary>
-    
-    
-      <category term="Hexo" scheme="http://qbqb.pro/tags/Hexo/"/>
     
   </entry>
   

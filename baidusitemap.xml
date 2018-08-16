@@ -4,6 +4,23 @@
 
     
   <url>
+    <loc>http://qbqb.pro/2018/08/16/first/</loc>
+    <lastmod>2018-08-16T13:28:45.665Z</lastmod>
+    <data>
+        <display>
+        <title>第一篇博客，该写点什么~</title>
+        <pubTime>2018-08-16T12:00:28.000Z</pubTime>
+        
+        <tag>记录</tag>
+         
+         
+           
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://qbqb.pro/2018/08/14/%E6%88%91%E7%9A%84%E4%B8%96%E7%95%8C/</loc>
     <lastmod>2018-08-15T05:45:30.332Z</lastmod>
     <data>
@@ -14,23 +31,6 @@
         <tag>Hexo</tag>
          
         <tag>markdown</tag>
-         
-         
-           
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://qbqb.pro/2018/08/14/hello-world/</loc>
-    <lastmod>2018-08-14T08:02:26.186Z</lastmod>
-    <data>
-        <display>
-        <title>Hello World</title>
-        <pubTime>2018-08-14T01:52:20.408Z</pubTime>
-        
-        <tag>Hexo</tag>
          
          
            
