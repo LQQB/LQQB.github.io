@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://qbqb.pro/"/>
-  <updated>2018-08-16T13:34:44.066Z</updated>
+  <updated>2018-08-20T10:34:57.073Z</updated>
   <id>http://qbqb.pro/</id>
   
   <author>
@@ -15,6 +15,26 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Hexo 使用小记</title>
+    <link href="http://qbqb.pro/2018/08/20/Hexo%E4%BD%BF%E7%94%A8%E5%B0%8F%E8%AE%B0/"/>
+    <id>http://qbqb.pro/2018/08/20/Hexo使用小记/</id>
+    <published>2018-08-20T06:06:12.000Z</published>
+    <updated>2018-08-20T10:34:57.073Z</updated>
+    
+    <content type="html"><![CDATA[<p>hexo 是一个快速、简洁且高效的博客框架<a id="more"></a></p><blockquote><p>参考 <a href="https://hexo.io/zh-cn/docs/" target="_blank" rel="noopener">Hexo 官方文档</a><br>参考 <a href="https://youngwilliamz.github.io/2018-07-10-Hexo-Markdown/" target="_blank" rel="noopener">Hexo 使用MD编辑技巧 </a><br>参考 <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank" rel="noopener">Material Design风格的Hexo主题</a><br>参考 <a href="https://www.jianshu.com/p/86557c34b671" target="_blank" rel="noopener">Hexo Seo优化</a></p></blockquote><h3 id="Hexo-安装"><a href="#Hexo-安装" class="headerlink" title="Hexo 安装"></a>Hexo 安装</h3><p>安装前提检查电脑中是否安装下列应用程序</p><blockquote><p><a href="https://nodejs.org/en/" target="_blank" rel="noopener"><code>Node.js</code></a><br><a href="https://git-scm.com/" target="_blank" rel="noopener"><code>Git</code></a></p></blockquote><p>没有的话，请先安装吧,建议最新版本，可以避免部分安装上的错误。如果您的电脑中已经安装上述必备程序，那么恭喜您！接下来只需要使用 npm 即可完成 Hexo 的安装。</p><blockquote><p><code>npm install -g hexo-cli</code></p></blockquote><h3 id="Hexo-常用命令"><a href="#Hexo-常用命令" class="headerlink" title="Hexo 常用命令"></a>Hexo 常用命令</h3><blockquote><p>hexo init [folder]         <code># 新建网站，folder为文件夹名</code><br>hexo clean                <code># 清除缓存文件</code><br>hexo g -d                     <code># 生成静态文件，并自动部署网站</code><br>hexo new “postname”         <code># 新建一篇文章</code><br>hexo server                 <code># 启动服务器</code></p></blockquote><h3 id="Hexo-目录结构"><a href="#Hexo-目录结构" class="headerlink" title="Hexo 目录结构"></a>Hexo 目录结构</h3><p> 使用新建网站命令创建Hexo的目录结构</p><blockquote><p>hexo init <code>folder</code><br>cd <code>folder</code><br>npm install</p></blockquote><p>整个过程只需要两三分钟左右的时间 emmmm…. , 文件的目录结构如下图：<br><figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="/2018/08/20/Hexo使用小记/目录结构图.png" alt="目录结构图" title="">                </div>                <div class="image-caption">目录结构图</div>            </figure><br><strong> 下面是比较常用到的几个文件 </strong></p><h4 id="config-yml"><a href="#config-yml" class="headerlink" title="_config.yml"></a>_config.yml</h4><p>网站的配置信息，可以在此配置大部分的参数,在新建Hexo 目录的根路径上</p><h4 id="source"><a href="#source" class="headerlink" title="source"></a>source</h4><p>资源文件夹是存放用户资源的地方。除 _posts 文件夹之外，开头命名为 _ (下划线)的文件 / 文件夹和隐藏的文件将会被忽略。Markdown 和 HTML 文件会被解析并放到 public 文件夹，而其他文件会被拷贝过去。</p><h4 id="themes"><a href="#themes" class="headerlink" title="themes"></a>themes</h4><p>主题 文件夹。Hexo 会根据主题来生成静态页面。</p><h3 id="Hexo-主题安装"><a href="#Hexo-主题安装" class="headerlink" title="Hexo 主题安装"></a>Hexo 主题安装</h3><p>安装该主题需确认你的 Hexo 版本在 3.0 以上，以及 Node 版本为 6.x 以上，在 Hexo 根目录，执行以下命令</p><blockquote><p>git clone <a href="mailto:git@github.com" target="_blank" rel="noopener">git@github.com</a>:yscoder/hexo-theme-indigo.git themes/indigo</p></blockquote><p>并编辑站点配置文件，<strong> _config.yml </strong> 启用主题 <strong> theme: indigo </strong>,详细配置信息可查看<a href="https://github.com/yscoder/hexo-theme-indigo/wiki" target="_blank" rel="noopener">文档</a>,根据具体自己的需求进行配置</p><figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="/2018/08/20/Hexo使用小记/主题效果.png" alt="主题效果" title="">                </div>                <div class="image-caption">主题效果</div>            </figure><hr><p>后续补充<br><!-- <img src="/主题效果.png" width="300" height="400"> –&gt;</p>--></p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;hexo 是一个快速、简洁且高效的博客框架&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="Hexo" scheme="http://qbqb.pro/tags/Hexo/"/>
+    
+  </entry>
   
   <entry>
     <title>第一篇博客，该写点什么~</title>
