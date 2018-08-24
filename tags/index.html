@@ -20,14 +20,15 @@
     <meta name="theme-color" content="#3F51B5">
     
     
-    <meta name="keywords" content="">
+    <meta name="keywords" content="lqqb,lqb,LQQB,lQB,qbqb,大问题,小问题,分解">
     <meta name="description" content="将一个大问题分解为若干小问题，然后一个一个解决">
+<meta name="keywords" content="lqqb,lqb,LQQB,lQB,qbqb,大问题,小问题,分解">
 <meta property="og:type" content="website">
 <meta property="og:title" content="LQQB&#39;s Blog (ง •̀_•́)ง">
 <meta property="og:url" content="http://qbqb.pro/tags/index.html">
 <meta property="og:site_name" content="LQQB&#39;s Blog (ง •̀_•́)ง">
 <meta property="og:description" content="将一个大问题分解为若干小问题，然后一个一个解决">
-<meta property="og:locale" content="zh-tw">
+<meta property="og:locale" content="zh-CN">
 <meta property="og:updated_time" content="2018-08-14T05:32:22.497Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="LQQB&#39;s Blog (ง •̀_•́)ง">
@@ -118,7 +119,7 @@
             <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
                 <i class="icon icon-lg icon-chevron-left"></i>
             </a>
-            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="検索">
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
             <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
                 <i class="icon icon-lg icon-search"></i>
             </a>
@@ -144,7 +145,7 @@
 <div class="tabs-bar container">
     <nav class="tags-list">
         <a href="../tags" style="-webkit-order:-1;order:-1" class="tags-list-item waves-effect waves-button waves-light
-             active">全て</a>
+             active">全部</a>
         
 
             <a href="Hexo/" style="-webkit-order:0;order:0" class="tags-list-item waves-effect waves-button waves-light">Hexo</a>
@@ -340,7 +341,7 @@
             
                 <span><a href="../atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
             
-            <span>このブログの内容物は<a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.ja">クリエイティブ・コモンズ 表示 - 非営利 - 継承 4.0 国際ライセンスの下に提供されています</a></span>
+            <span>博客内容遵循 <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
         </p>
     </div>
     <div class="bottom">
@@ -434,6 +435,27 @@ var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
 <script src="//unpkg.com/hexo-theme-material-indigo@latest/js/search.min.js" async></script>
 
 
+
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+});
+</script>
+
+<script async src="//cdn.bootcss.com/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML" async></script>
 
 
 
