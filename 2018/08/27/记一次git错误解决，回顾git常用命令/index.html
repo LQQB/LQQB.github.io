@@ -14,28 +14,27 @@
     
     
     
-    <title>Hexo 使用小记 | LQQB&#39;s Blog (ง •̀_•́)ง | 将一个大问题分解为若干小问题，然后一个一个解决</title>
+    <title>记一次git错误解决 | LQQB&#39;s Blog (ง •̀_•́)ง | 将一个大问题分解为若干小问题，然后一个一个解决</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
     <meta name="theme-color" content="#3F51B5">
     
     
-    <meta name="keywords" content="Hexo">
-    <meta name="description" content="hexo 是一个快速、简洁且高效的博客框架">
-<meta name="keywords" content="使用小记,Hexo,hexo">
+    <meta name="keywords" content="git">
+    <meta name="description" content="记录一次 git 错误， fatal: Path ‘XXX’ is in submodule ‘XXX’">
+<meta name="keywords" content="git命令, git错误, git">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Hexo 使用小记">
-<meta property="og:url" content="http://qbqb.pro/2018/08/20/Hexo使用小记/index.html">
+<meta property="og:title" content="记一次git错误解决">
+<meta property="og:url" content="http://qbqb.pro/2018/08/27/记一次git错误解决，回顾git常用命令/index.html">
 <meta property="og:site_name" content="LQQB&#39;s Blog (ง •̀_•́)ง">
-<meta property="og:description" content="hexo 是一个快速、简洁且高效的博客框架">
+<meta property="og:description" content="记录一次 git 错误， fatal: Path ‘XXX’ is in submodule ‘XXX’">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="http://qbqb.pro/2018/08/20/Hexo使用小记/目录结构图.png">
-<meta property="og:image" content="http://qbqb.pro/2018/08/20/Hexo使用小记/主题效果.png">
-<meta property="og:updated_time" content="2018-08-27T09:04:25.561Z">
+<meta property="og:image" content="http://qbqb.pro/2018/08/27/记一次git错误解决，回顾git常用命令/github显示.png">
+<meta property="og:updated_time" content="2018-08-27T10:46:15.244Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Hexo 使用小记">
-<meta name="twitter:description" content="hexo 是一个快速、简洁且高效的博客框架">
-<meta name="twitter:image" content="http://qbqb.pro/2018/08/20/Hexo使用小记/目录结构图.png">
+<meta name="twitter:title" content="记一次git错误解决">
+<meta name="twitter:description" content="记录一次 git 错误， fatal: Path ‘XXX’ is in submodule ‘XXX’">
+<meta name="twitter:image" content="http://qbqb.pro/2018/08/27/记一次git错误解决，回顾git常用命令/github显示.png">
     
         <link rel="alternate" type="application/atom+xml" title="LQQB&#39;s Blog (ง •̀_•́)ง" href="../../../../atom.xml">
     
@@ -116,7 +115,7 @@
         <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
           <i class="icon icon-lg icon-navicon"></i>
         </a>
-        <div class="flex-col header-title ellipsis">Hexo 使用小记</div>
+        <div class="flex-col header-title ellipsis">记一次git错误解决</div>
         
         <div class="search-wrap" id="search-wrap">
             <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
@@ -138,11 +137,11 @@
 <header class="content-header post-header">
 
     <div class="container fade-scale">
-        <h1 class="title">Hexo 使用小记</h1>
+        <h1 class="title">记一次git错误解决</h1>
         <h5 class="subtitle">
             
-                <time datetime="2018-08-20T06:06:12.000Z" itemprop="datePublished" class="page-time">
-  2018-08-20
+                <time datetime="2018-08-27T02:23:06.000Z" itemprop="datePublished" class="page-time">
+  2018-08-27
 </time>
 
 
@@ -158,21 +157,14 @@
 
 <div class="container body-wrap">
     
-    <aside class="post-widget">
-        <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
-            <h4>TOC</h4>
-            <ol class="post-toc"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Hexo-安装"><span class="post-toc-number">1.</span> <span class="post-toc-text">Hexo 安装</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Hexo-常用命令"><span class="post-toc-number">2.</span> <span class="post-toc-text">Hexo 常用命令</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Hexo-目录结构"><span class="post-toc-number">3.</span> <span class="post-toc-text">Hexo 目录结构</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#config-yml"><span class="post-toc-number">3.1.</span> <span class="post-toc-text">_config.yml</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#source"><span class="post-toc-number">3.2.</span> <span class="post-toc-text">source</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#themes"><span class="post-toc-number">3.3.</span> <span class="post-toc-text">themes</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Hexo-主题安装"><span class="post-toc-number">4.</span> <span class="post-toc-text">Hexo 主题安装</span></a></li></ol>
-        </nav>
-    </aside>
 
-
-<article id="post-Hexo使用小记"
+<article id="post-记一次git错误解决，回顾git常用命令"
   class="post-article article-type-post fade" itemprop="blogPost">
 
     <div class="post-card">
-        <h1 class="post-card-title">Hexo 使用小记</h1>
+        <h1 class="post-card-title">记一次git错误解决</h1>
         <div class="post-meta">
-            <time class="post-time" title="2018-08-20 14:06:12" datetime="2018-08-20T06:06:12.000Z"  itemprop="datePublished">2018-08-20</time>
+            <time class="post-time" title="2018-08-27 10:23:06" datetime="2018-08-27T02:23:06.000Z"  itemprop="datePublished">2018-08-27</time>
 
             
 
@@ -185,50 +177,28 @@
 
         </div>
         <div class="post-content" id="post-content" itemprop="postContent">
-            <p>hexo 是一个快速、简洁且高效的博客框架<a id="more"></a>，本网站由Hexo 搭建而成，使用了的主题是有着Design风格的Hexo主题 indigo。下面我们简单的总结一下搭建过程。</p>
-<blockquote>
-<p>参考 <a href="https://hexo.io/zh-cn/docs/" target="_blank" rel="noopener">Hexo 官方文档</a><br>参考 <a href="https://youngwilliamz.github.io/2018-07-10-Hexo-Markdown/" target="_blank" rel="noopener">Hexo 使用MD编辑技巧 </a><br>参考 <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank" rel="noopener">Material Design风格的Hexo主题</a><br>参考 <a href="https://www.jianshu.com/p/86557c34b671" target="_blank" rel="noopener">Hexo Seo优化</a></p>
-</blockquote>
-<h3 id="Hexo-安装"><a href="#Hexo-安装" class="headerlink" title="Hexo 安装"></a>Hexo 安装</h3><p>安装前,请检查电脑中是否安装下列应用程序</p>
-<blockquote>
-<p><a href="https://nodejs.org/en/" target="_blank" rel="noopener"><code>Node.js</code></a><br><a href="https://git-scm.com/" target="_blank" rel="noopener"><code>Git</code></a></p>
-</blockquote>
-<p>没有的话，请先安装吧,建议最新版本，可以避免部分安装上的错误。如果您的电脑中已经安装上述必备程序，那么恭喜您！接下来只需要使用 npm 即可完成 Hexo 的安装。</p>
-<blockquote>
-<p><code>npm install -g hexo-cli</code></p>
-</blockquote>
-<h3 id="Hexo-常用命令"><a href="#Hexo-常用命令" class="headerlink" title="Hexo 常用命令"></a>Hexo 常用命令</h3><blockquote>
-<p>hexo init [folder]         <code># 新建网站，folder为文件夹名</code><br>hexo clean                <code># 清除缓存文件</code><br>hexo g -d                     <code># 生成静态文件，并自动部署网站</code><br>hexo new “postname”         <code># 新建一篇文章</code><br>hexo server                 <code># 启动服务器</code></p>
-</blockquote>
-<h3 id="Hexo-目录结构"><a href="#Hexo-目录结构" class="headerlink" title="Hexo 目录结构"></a>Hexo 目录结构</h3><p> 使用新建网站命令创建Hexo的目录结构</p>
-<blockquote>
-<p>hexo init <code>folder</code><br>cd <code>folder</code><br>npm install</p>
-</blockquote>
-<p>整个过程只需要两三分钟左右的时间 emmmm…. , 文件的目录结构如下图：<br><figure class="image-bubble">
+            <p>记录一次 git 错误，<strong> fatal: Path ‘XXX’ is in submodule ‘XXX’ </strong><br><a id="more"></a></p>
+<p>将Hexo博客部署到 Github 跟 Codeing 的 Pages 之后，为了能方便的在其他电脑也能随时更新博客文章、Hexo 配置文件和主题配置文件，我们在 GitHub Pages 仓库上创建了一个名为 Hexo 的分支，用来存放 Hexo 博客的网站文件。具体的操作步骤参考<a href="https://www.zhihu.com/question/21193762" target="_blank" rel="noopener"><strong> 知乎上的一个高赞回复 </strong></a> 这里不详细展开 <strong> (ˉ▽ˉ；)… </strong> ）。创建分支 Hexo ,将网站文件提交到分支，在另外一台电脑 pull 下分支中网站文件，安装相关模块，一气呵成。。。</p>
+<p>可是在<code>hexo server</code>本地运行的时候,无法运行? 检查了主题文件夹目录下 <code>themes/indigo</code> 既然是空的，远程仓库中的对应的文件夹图标往常不同，画风都变了 <code>(ﾉ ○ Д ○)ﾉ</code> ，还无法点击查看下级目录，与下图的图标类似：<br><figure class="image-bubble">
                 <div class="img-lightbox">
                     <div class="overlay"></div>
-                    <img src="/2018/08/20/Hexo使用小记/目录结构图.png" alt="目录结构图" title="">
+                    <img src="/2018/08/27/记一次git错误解决，回顾git常用命令/github显示.png" alt="" title="">
                 </div>
-                <div class="image-caption">目录结构图</div>
-            </figure><br><strong> 下面是比较常用到的几个文件 </strong></p>
-<h4 id="config-yml"><a href="#config-yml" class="headerlink" title="_config.yml"></a>_config.yml</h4><p>网站的配置信息，可以在此配置大部分的参数,在新建Hexo 目录的根路径上</p>
-<h4 id="source"><a href="#source" class="headerlink" title="source"></a>source</h4><p>资源文件夹是存放用户资源的地方。除 _posts 文件夹之外，开头命名为 _ (下划线)的文件 / 文件夹和隐藏的文件将会被忽略。Markdown 和 HTML 文件会被解析并放到 public 文件夹，而其他文件会被拷贝过去。</p>
-<h4 id="themes"><a href="#themes" class="headerlink" title="themes"></a>themes</h4><p>主题 文件夹。Hexo 会根据主题来生成静态页面。</p>
-<h3 id="Hexo-主题安装"><a href="#Hexo-主题安装" class="headerlink" title="Hexo 主题安装"></a>Hexo 主题安装</h3><p>安装该主题需确认你的 Hexo 版本在 3.0 以上，以及 Node 版本为 6.x 以上，在 Hexo 根目录，执行以下命令</p>
+                <div class="image-caption"></div>
+            </figure><br>一开始以为该文件目录,忘记推送至远程仓库，所以打算重新将该文件夹下的文件添加至暂存区，git add themes/indigo/* ,可是既然报错了, 错误信息 <code>** fatal: Path &#39;XXX&#39; is in submodule &#39;XXX&#39; **</code> ???</p>
+<p>仔细对比了themes/indigo 下的文件，发现该文件既然有一个 .git 目录，推测是由于一个 git 项目下无法识别其他的 git 项目。</p>
+<ul>
+<li>把 <code>indigo</code> 主题文件复制一份删除 .git 文件</li>
+<li><p>从当前的工作空间中和索引中删除主题文件 <code>indigo</code></p>
 <blockquote>
-<p>git clone <a href="mailto:git@github.com" target="_blank" rel="noopener">git@github.com</a>:yscoder/hexo-theme-indigo.git themes/indigo</p>
+<p> git rm -rf themes/indigo</p>
 </blockquote>
-<p>并编辑站点配置文件，<strong> _config.yml </strong> 启用主题 <strong> theme: indigo </strong>,详细配置信息可查看<a href="https://github.com/yscoder/hexo-theme-indigo/wiki" target="_blank" rel="noopener">文档</a>,根据具体自己的需求进行配置</p>
-<figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="/2018/08/20/Hexo使用小记/主题效果.png" alt="主题效果" title="">
-                </div>
-                <div class="image-caption">主题效果</div>
-            </figure>
-<hr>
-<p>后续补充<br><!-- <img src="/主题效果.png" width="300" height="400"> –&gt;</p>
---></p>
+</li>
+<li><p>将 <code>indigo</code> 主题文件复制到原来的主题问题目录下，添加暂存区，提交版本库，推送分支<br>完成。<br>重新再另外一台电脑 拉取分支，可以正常运行~~~</p>
+<!-- <img src="/github显示.png"> –&gt;
+</li>
+</ul>
+--></li></ul>
         </div>
 
         <blockquote class="post-copyright">
@@ -236,7 +206,7 @@
     <div class="content">
         
 <span class="post-time">
-    最后更新时间：<time datetime="2018-08-27T09:04:25.561Z" itemprop="dateUpdated">2018-08-27 17:04:25</time>
+    最后更新时间：<time datetime="2018-08-27T10:46:15.244Z" itemprop="dateUpdated">2018-08-27 18:46:15</time>
 </span><br>
 
 
@@ -260,7 +230,7 @@
 
         <div class="post-footer">
             
-	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../../../tags/Hexo/">Hexo</a></li></ul>
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../../../tags/git/">git</a></li></ul>
 
 
             
@@ -270,7 +240,7 @@
 <div class="page-share" id="pageShare">
     <ul class="reset share-icons">
       <li>
-        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://qbqb.pro/2018/08/20/Hexo使用小记/&title=《Hexo 使用小记》 — LQQB's Blog (ง •̀_•́)ง&pic=http://qbqb.pro/img/avatar.jpg" data-title="微博">
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://qbqb.pro/2018/08/27/记一次git错误解决，回顾git常用命令/&title=《记一次git错误解决》 — LQQB's Blog (ง •̀_•́)ง&pic=http://qbqb.pro/img/avatar.jpg" data-title="微博">
           <i class="icon icon-weibo"></i>
         </a>
       </li>
@@ -280,22 +250,22 @@
         </a>
       </li>
       <li>
-        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://qbqb.pro/2018/08/20/Hexo使用小记/&title=《Hexo 使用小记》 — LQQB's Blog (ง •̀_•́)ง&source=hexo 是一个快速、简洁且高效的博客框架" data-title=" QQ">
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://qbqb.pro/2018/08/27/记一次git错误解决，回顾git常用命令/&title=《记一次git错误解决》 — LQQB's Blog (ง •̀_•́)ง&source=记录一次 git 错误， fatal: Path ‘XXX’ is in submodule ‘XXX’ " data-title=" QQ">
           <i class="icon icon-qq"></i>
         </a>
       </li>
       <li>
-        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://qbqb.pro/2018/08/20/Hexo使用小记/" data-title=" Facebook">
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://qbqb.pro/2018/08/27/记一次git错误解决，回顾git常用命令/" data-title=" Facebook">
           <i class="icon icon-facebook"></i>
         </a>
       </li>
       <li>
-        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Hexo 使用小记》 — LQQB's Blog (ง •̀_•́)ง&url=http://qbqb.pro/2018/08/20/Hexo使用小记/&via=http://qbqb.pro" data-title=" Twitter">
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《记一次git错误解决》 — LQQB's Blog (ง •̀_•́)ง&url=http://qbqb.pro/2018/08/27/记一次git错误解决，回顾git常用命令/&via=http://qbqb.pro" data-title=" Twitter">
           <i class="icon icon-twitter"></i>
         </a>
       </li>
       <li>
-        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://qbqb.pro/2018/08/20/Hexo使用小记/" data-title=" Google+">
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://qbqb.pro/2018/08/27/记一次git错误解决，回顾git常用命令/" data-title=" Google+">
           <i class="icon icon-google-plus"></i>
         </a>
       </li>
@@ -315,21 +285,14 @@
     </div>
 
     
-<nav class="post-nav flex-row flex-justify-between">
-  
-    <div class="waves-block waves-effect prev">
-      <a href="../../27/记一次git错误解决，回顾git常用命令/" id="post-prev" class="post-nav-link">
-        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
-        <h4 class="title">记一次git错误解决</h4>
-      </a>
-    </div>
+<nav class="post-nav flex-row flex-justify-between flex-row-reverse">
   
 
   
     <div class="waves-block waves-effect next">
-      <a href="../../16/first/" id="post-next" class="post-nav-link">
+      <a href="../../20/Hexo使用小记/" id="post-next" class="post-nav-link">
         <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
-        <h4 class="title">第一篇博客，该写点什么~</h4>
+        <h4 class="title">Hexo 使用小记</h4>
       </a>
     </div>
   
@@ -457,7 +420,7 @@
 <div class="global-share" id="globalShare">
     <ul class="reset share-icons">
       <li>
-        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://qbqb.pro/2018/08/20/Hexo使用小记/&title=《Hexo 使用小记》 — LQQB's Blog (ง •̀_•́)ง&pic=http://qbqb.pro/img/avatar.jpg" data-title="微博">
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://qbqb.pro/2018/08/27/记一次git错误解决，回顾git常用命令/&title=《记一次git错误解决》 — LQQB's Blog (ง •̀_•́)ง&pic=http://qbqb.pro/img/avatar.jpg" data-title="微博">
           <i class="icon icon-weibo"></i>
         </a>
       </li>
@@ -467,22 +430,22 @@
         </a>
       </li>
       <li>
-        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://qbqb.pro/2018/08/20/Hexo使用小记/&title=《Hexo 使用小记》 — LQQB's Blog (ง •̀_•́)ง&source=hexo 是一个快速、简洁且高效的博客框架" data-title=" QQ">
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://qbqb.pro/2018/08/27/记一次git错误解决，回顾git常用命令/&title=《记一次git错误解决》 — LQQB's Blog (ง •̀_•́)ง&source=记录一次 git 错误， fatal: Path ‘XXX’ is in submodule ‘XXX’ " data-title=" QQ">
           <i class="icon icon-qq"></i>
         </a>
       </li>
       <li>
-        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://qbqb.pro/2018/08/20/Hexo使用小记/" data-title=" Facebook">
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://qbqb.pro/2018/08/27/记一次git错误解决，回顾git常用命令/" data-title=" Facebook">
           <i class="icon icon-facebook"></i>
         </a>
       </li>
       <li>
-        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Hexo 使用小记》 — LQQB's Blog (ง •̀_•́)ง&url=http://qbqb.pro/2018/08/20/Hexo使用小记/&via=http://qbqb.pro" data-title=" Twitter">
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《记一次git错误解决》 — LQQB's Blog (ง •̀_•́)ง&url=http://qbqb.pro/2018/08/27/记一次git错误解决，回顾git常用命令/&via=http://qbqb.pro" data-title=" Twitter">
           <i class="icon icon-twitter"></i>
         </a>
       </li>
       <li>
-        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://qbqb.pro/2018/08/20/Hexo使用小记/" data-title=" Google+">
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://qbqb.pro/2018/08/27/记一次git错误解决，回顾git常用命令/" data-title=" Google+">
           <i class="icon icon-google-plus"></i>
         </a>
       </li>
@@ -493,7 +456,7 @@
 <div class="page-modal wx-share" id="wxShare">
     <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
-    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACJklEQVR42u3ay3KDMAwF0P7/T9OZrgtcyWbaiONVJgHik4Wih7++4nX8rOvXZ9ef3XV2zdkzNywMDIyPZRyXK9nW9VYSwPW913vDwMB4DyMJsgk1+TSJltWAjoGBgdFL9fKEbz31xMDAwLhJy4pJXvUdDAwMjGrat55EVgPu5locAwPjAxm7BgNPvP6D+QYGBsY/YxzFlQwge4lgHmR/uQsDA2M0Y2U8mYwqew21XlmLgYExlfFEwK020RLSTbKIgYExmpGUrCsF7fo7+bEMDAyM2Yx80+vU/BfNRwUYGBizGXkxWS04rzfaK3ej0yIYGBhDGdWWfe9A2EoBfEPCwMB4ASNP+Mozh3icsPJMDAyM2Yx8nJmkeutheiXfw8DAmMrolZ152K0mfL1jHxgYGO9k7Aq41Xjf+/kwMDDew9jQ9spDZPGum+sxMDBewOg1yHYdrah+S+G0CAYGxiBGnsBVG2dJIrg+8sTAwJjN6G29OmjslcR5yoiBgTGbUQ2s1wH6uWNh0dwVAwNjNGOl0VZujeWby/8MMDAwRjN6Da9dI8mEUVgYGBhDGUdx7RpMVscSN59iYGCMZlRj2krgrg4MeiEeAwNjKiMJsivjzDx8V1NVDAyMtzF6/fa8QK2G3WpJjIGBgfFENpoMLAthFwMDA6M17MwbanmyePp8DAyMFzCSMNc8tlUMx73hKAYGxmxGtYDMU7feMCD/lqURJgYGxmcwvgHrixkGv2A+ngAAAABJRU5ErkJggg==" alt="微信分享二维码">
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAN4AAADeCAAAAAB3DOFrAAACwElEQVR42u3ay2ocQQwFUP//TzuQVQLpnnulLs9ATq8M7kedMpRkSV9f8fX9+2rv/P7jSu68+tb9ex648PDw8EZLv7quPnC1iOT++5+vMPd3Xm4BHh4e3jFefsTfH9BPPbW/Bw8PD+8TeHnKmwSJBJyvAQ8PD++TefdJbVsZmBU18PDw8D6BlxQj9sWLPHi0ZYsHai14eHh4MW/W1nrvzwf7e3h4eHiLrnpy6LchIQk8mxX+9WY8PDy8A7z7AkHbGJuNTN2n0XlIKP5jwMPDw1vzEuS+6bUZzGoLx/XfEA8PDy/mtaXP2f1tipxv0As2Hh4e3jFeGwCSdlQ+LjBra0WlDTw8PLxjvE36mx/fbfDIx8LqAgQeHh7emtce9204uafOyr7RF/Hw8PAO8H5m6Cofn5ptxJtnyvDw8P5L3rllzQoTbUB6sUI8PDy8R3l58ykPAPXulrzh6AAeHh7eAV6ekT77VA5uSyF4eHh453jtgZ4k0Jthqdkw1j9+i4eHh3eA1xZP8zQ3X0SeNA8TfTw8PLxHefv2/OzIHg5RlRuEh4eHd4KXY/KkOS89RKXYdTjBw8PDe5Y3e8UshLQjXO1I1tdTO4SHh4cXJ6Zte2mfTLfvyZGX/T08PDy8h3h5E2ufCp9rfRX9PTw8PLwFb5PIztpgbVo8K23g4eHhnePNmv1JGHjqqTzpx8PDw/scXn40t4XjNinP34aHh4d3jtc2xjatr7zI26bg9abj4eHhLXizcuomgW5DUbtxUUqNh4eHt+BtxrPaMNAOVyWMvC2Hh4eH9yxv07bPSe23ig5eMjqAh4eHd4DXFknzY7odTcifjVJqPDw8vLfyZp+cHeuzTbxMqfHw8PDeymuLCLP0uh1ouLwfDw8P7xgvL0Zskul2mCDZ3BerwsPDwzvA2zfA9m2tnD1L8fHw8PAe4v0CgWiSl/N3FzsAAAAASUVORK5CYII=" alt="微信分享二维码">
 </div>
 
 
