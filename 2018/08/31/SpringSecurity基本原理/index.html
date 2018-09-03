@@ -1,0 +1,566 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    
+    <title>SpringSecurity基本原理分析 | LQQB&#39;s Blog (ง •̀_•́)ง | 将一个大问题分解为若干小问题，然后一个一个解决</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="Spring,Java,SpringSecurity">
+    <meta name="description" content="SpringSecurity 是一个能够基于 Spring 的企业应用系统提供声明式的安全框架">
+<meta name="keywords" content="SpringSecurity基本原理,SpringSecurity">
+<meta property="og:type" content="article">
+<meta property="og:title" content="SpringSecurity基本原理分析">
+<meta property="og:url" content="http://qbqb.pro/2018/08/31/SpringSecurity基本原理/index.html">
+<meta property="og:site_name" content="LQQB&#39;s Blog (ง •̀_•́)ง">
+<meta property="og:description" content="SpringSecurity 是一个能够基于 Spring 的企业应用系统提供声明式的安全框架">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http://qbqb.pro/2018/08/31/SpringSecurity基本原理/filter.png">
+<meta property="og:image" content="http://qbqb.pro/2018/08/31/SpringSecurity基本原理/认证和授权.png">
+<meta property="og:updated_time" content="2018-09-03T09:44:37.941Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="SpringSecurity基本原理分析">
+<meta name="twitter:description" content="SpringSecurity 是一个能够基于 Spring 的企业应用系统提供声明式的安全框架">
+<meta name="twitter:image" content="http://qbqb.pro/2018/08/31/SpringSecurity基本原理/filter.png">
+    
+        <link rel="alternate" type="application/atom+xml" title="LQQB&#39;s Blog (ง •̀_•́)ง" href="../../../../atom.xml">
+    
+    <link rel="shortcut icon" href="../../../../img/favicon.png">
+    <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(../../../../img/brand.jpg)">
+      <div class="brand">
+        <a href="../../../../index.html" class="avatar waves-effect waves-circle waves-light">
+          <img src="../../../../img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">lqqb</h5>
+          <a href="mailto:897680736@qq.com" title="897680736@qq.com" class="mail">897680736@qq.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="../../../../index.html"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="../../../../archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                归档
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="../../../../tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                标签
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/LQQB" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="http://weibo.com/qbmobq" target="_blank" >
+                <i class="icon icon-lg icon-weibo"></i>
+                微博
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">SpringSecurity基本原理分析</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">SpringSecurity基本原理分析</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2018-08-31T09:25:56.000Z" itemprop="datePublished" class="page-time">
+  2018-08-31
+</time>
+
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#它能做什么"><span class="post-toc-number">1.</span> <span class="post-toc-text">它能做什么</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#它是如何实现的"><span class="post-toc-number">2.</span> <span class="post-toc-text">它是如何实现的</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#它的常用-Filter-总结"><span class="post-toc-number">3.</span> <span class="post-toc-text">它的常用 Filter 总结</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#最后说点什么"><span class="post-toc-number">4.</span> <span class="post-toc-text">最后说点什么</span></a></li></ol>
+        </nav>
+    </aside>
+
+
+<article id="post-SpringSecurity基本原理"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">SpringSecurity基本原理分析</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2018-08-31 17:25:56" datetime="2018-08-31T09:25:56.000Z"  itemprop="datePublished">2018-08-31</time>
+
+            
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <p><em>SpringSecurity</em> 是一个能够基于 <em>Spring</em> 的企业应用系统提供声明式的安全框架<a id="more"></a></p>
+<h3 id="它能做什么"><a href="#它能做什么" class="headerlink" title="它能做什么"></a>它能做什么</h3><blockquote>
+<p><strong>认证:</strong> 识别当前用户是谁<br><strong>授权:</strong> 判断当前用户是否有权限进行相关操作<br><strong>安全防护:</strong> 防止伪造身份</p>
+</blockquote>
+<p>如果要对 Web 资源进行保护，最好的方法莫过于 Filter, 要项对方法调用进行保护，最好的方法莫过于AOP, <code>(ﾉ ○ Д ○)ﾉ</code>。</p>
+<h3 id="它是如何实现的"><a href="#它是如何实现的" class="headerlink" title="它是如何实现的"></a>它是如何实现的</h3><p>下面来简单的介绍一个 <strong>SpringSecurity 基本原理</strong> :<br>当一个请求要访问我们受 <strong>SpringSecurity</strong> 保护的 Web 资源的时候, 会先经过我们在 <em>Spring</em> 中设置的关于 <strong>SpringSecurity</strong> 的多层过滤器链,(如 <strong>UsernamePasswordAuthenticationFilter</strong>, <strong>BasicAuthenticationFilter</strong>),一个过滤器一个过滤器往下走,每通过一个过滤器的认证就会添加在请求中添加一个标记。如下图所示:<br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="/2018/08/31/SpringSecurity基本原理/filter.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure></p>
+<p>然后勒，这些 Filter 怎么和我们的数据库联系在一起勒？</p>
+<p>这些 <strong>Filter</strong> 并不直接处理用户的认证，也不直接处理用户的授权，而是把它们交给认证管理器 <strong>AuthenticationManager</strong> 和决策管理器 <strong>AccessDecisionManager</strong>。SpringSecurity 提供了多个Provider的实现类，拿 <strong>UsernamePasswordAuthenticationFilter</strong>举例，当我们调用这个 <strong>Filter</strong>，并通过<strong>AuthenticationManager</strong>调用到 <strong>DaoAuthenticationProvider</strong>, 这个 <strong>Provider</strong> 可以调用数据库来存储用户的认证数据。对于<strong>Voter</strong>，我们一般选择<strong>RoleVoter</strong>就够用了，它会根据我们配置中的设置来决定是否允许某一个用户访问制定的Web资源。认证跟授权的流程如下图：<br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="/2018/08/31/SpringSecurity基本原理/认证和授权.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure></p>
+<p> <strong>DaoAuthenticationProvider</strong>不直接操作数据库的，它把任务委托给了 <strong>UserDetailService</strong>，我们要做的就是现实 <strong>UserDetailService</strong>, 它既是连接我们数据库跟SpringSecurity的桥梁。UserDetailService 的要求也很简单，只需要返回一个 <strong>org.springframework.security.userdetails.User</strong> 对象的 <strong>loadUserByUsername(String userName)</strong> 方法<br>。因此，怎么设计数据库都可以，不管我们是用一个表还是两个表还是三个表，也不管我们是用户-授权，还是用户-角色-授权，还是用户-用户组-角色-授权，这些具体的东西 <strong>SpringSecurity</strong> 统统不关心，它只关心返回的那个User对象，至于怎么从数据库中读取数据，那就是我们自己的事了。</p>
+<p><strong>UserDetailService</strong> 实现类部分代码,模拟从数据库中获取用户信息:<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Component</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MyUserDetailsService</span> <span class="keyword">implements</span> <span class="title">UserDetailsService</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Autowired</span></span><br><span class="line">    <span class="keyword">private</span> UserRepository userRepository;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> UserDetails <span class="title">loadUserByUsername</span><span class="params">(String username)</span> </span>&#123;</span><br><span class="line">        User user = userRepository.findByUsername(username);</span><br><span class="line">        <span class="keyword">if</span> (user == <span class="keyword">null</span>) &#123;</span><br><span class="line">            <span class="keyword">throw</span> <span class="keyword">new</span> UsernameNotFoundException(username);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> MyUserPrincipal(user);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>MyUserPrincipal定义如下：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MyUserPrincipal</span> <span class="keyword">implements</span> <span class="title">UserDetails</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> User user;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">MyUserPrincipal</span><span class="params">(User user)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.user = user;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//...</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>SpringSecurity 不关心你用了几个表，它只关心UserDetails对象。而决定用户能否访问指定Web资源的，是RoleVoter类，无需任何修改它可以工作得很好，唯一的缺点是它只认ROLE_前缀。</p>
+<h3 id="它的常用-Filter-总结"><a href="#它的常用-Filter-总结" class="headerlink" title="它的常用 Filter 总结"></a>它的常用 Filter 总结</h3><p>SpringSecurity 提供的Filter 不少，不过常用的只有这么几个，下面我们来总结一下：</p>
+<blockquote>
+<p><strong>ChannelProcessingFilter:</strong>  制定必须为https连接<br><strong>LogoutFilter:</strong>退出登录<br><strong>UsernamePasswordAuthenticationFilter:</strong> 账号密码登录<br><strong>RememberMeAuthenticationFilter:</strong> 记住用户<br><strong>FilterSecurityInterceptor:</strong> 这个过滤器是整个SpringSecurity过滤器链的最后一环</p>
+</blockquote>
+<p>接下来简短的来谈一谈，<strong>FilterSecurityInterceptor</strong> 这个过滤器的最后一环，也是最重要的一环。它的父类<strong>AbstractSecurityInterceptor</strong> 是一个实现了对受保护对象的访问进行拦截的抽象类,该抽象类包含了<strong>AccessDecisionManager(决策管理器)</strong>、<strong>AuthenticationManager(身份认证管理器)</strong>的setter， 可以通过<strong>Spring</strong> 自动注入，另外，资源角色授权器需要单独自定义注入。</p>
+<p>其中有几个比较重要的方法,都会在<code>FilterSecurityInterceptor</code>中被调用:</p>
+<blockquote>
+<p><strong>beforeInvocation()方法:</strong> 实现了对访问受保护对象的权限校验，内部用到了<code>AccessDecisionManager</code>和<code>AuthenticationManager</code>;<br><strong>finallyInvocation()方法:</strong> 用于实现受保护对象请求完毕后的一些清理工作，主要是如果在<code>beforeInvocation()</code>中改变了<code>SecurityContext</code>，则在<code>finallyInvocation()</code>中需要将其恢复为原来的<code>SecurityContext</code>,该方法的调用应当包含在子类请求受保护资源时的finally语句块中;<br><strong>afterInvocation()方法:</strong> 实现了对返回结果的处理，在注入了AfterInvocationManager的情况下默认会调用其decide()方法。</p>
+</blockquote>
+<p>来看看 <code>FilterSecurityInterceptor</code> 的部分源码：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">FilterSecurityInterceptor</span> <span class="keyword">extends</span> <span class="title">AbstractSecurityInterceptor</span> <span class="keyword">implements</span> <span class="title">Filter</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">	<span class="comment">// 。。。。</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">doFilter</span><span class="params">(ServletRequest request, ServletResponse response, FilterChain chain)</span> <span class="keyword">throws</span> IOException, ServletException </span>&#123;</span><br><span class="line">        FilterInvocation fi = <span class="keyword">new</span> FilterInvocation(request, response, chain);</span><br><span class="line">        <span class="keyword">this</span>.invoke(fi);    <span class="comment">//  invoke() 在Filter 的 doFilter（）中被调用</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// FilterSecurityInterceptor 的核心代码</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">invoke</span><span class="params">(FilterInvocation fi)</span> <span class="keyword">throws</span> IOException, ServletException </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (fi.getRequest() != <span class="keyword">null</span> &amp;&amp; fi.getRequest().getAttribute(<span class="string">"__spring_security_filterSecurityInterceptor_filterApplied"</span>) != <span class="keyword">null</span> &amp;&amp; <span class="keyword">this</span>.observeOncePerRequest) &#123;</span><br><span class="line">            fi.getChain().doFilter(fi.getRequest(), fi.getResponse());</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="keyword">if</span> (fi.getRequest() != <span class="keyword">null</span>) &#123;</span><br><span class="line">                fi.getRequest().setAttribute(<span class="string">"__spring_security_filterSecurityInterceptor_filterApplied"</span>, Boolean.TRUE);</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">	    <span class="comment">// 调用父类的beforeInvocation方法，该方法实现了对访问受保护对象的权限校验，</span></span><br><span class="line">	    <span class="comment">// 内部调用到了`AccessDecisionManager`和`AuthenticationManager`</span></span><br><span class="line">            InterceptorStatusToken token = <span class="keyword">super</span>.beforeInvocation(fi);</span><br><span class="line"></span><br><span class="line">            <span class="keyword">try</span> &#123;</span><br><span class="line">                fi.getChain().doFilter(fi.getRequest(), fi.getResponse());</span><br><span class="line">            &#125; <span class="keyword">finally</span> &#123;</span><br><span class="line">            	<span class="comment">// 调用父类的finallyInvocation方法, 用于实现受保护对象请求完毕后的一些清理工作</span></span><br><span class="line">                <span class="keyword">super</span>.finallyInvocation(token);</span><br><span class="line">            &#125;</span><br><span class="line">	  <span class="comment">// 用父类的afterInvocation方法,实现了对返回结果的处理，</span></span><br><span class="line">	  <span class="comment">// 在注入了AfterInvocationManager的情况下默认会调用其decide()方法。</span></span><br><span class="line">            <span class="keyword">super</span>.afterInvocation(token, (Object)<span class="keyword">null</span>);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="comment">// 。。。。</span></span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h3 id="最后说点什么"><a href="#最后说点什么" class="headerlink" title="最后说点什么"></a>最后说点什么</h3><p>感觉最后不说点什么，有点奇怪。。。<br>笔者目前也在学习的<strong>SpringSecurity</strong>， 目前是一个阶段性的总结，以后如果有更深的理解会继续更新。笔者并没有讲具体的实现细节，只是大概的过了一遍SpringSecurity的执行过程，有遗漏的错误的地方欢迎指出。</p>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    
+    <div class="content">
+        
+<span class="post-time">
+    最后更新时间：<time datetime="2018-09-03T09:44:37.941Z" itemprop="dateUpdated">2018-09-03 17:44:37</time>
+</span><br>
+
+
+        
+    </div>
+    
+    <footer>
+        <a href="http://qbqb.pro">
+            <img src="../../../../img/avatar.jpg" alt="lqqb">
+            lqqb
+        </a>
+    </footer>
+</blockquote>
+
+        
+<div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
+
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../../../tags/Java/">Java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../../../tags/Spring/">Spring</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../../../tags/SpringSecurity/">SpringSecurity</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://qbqb.pro/2018/08/31/SpringSecurity基本原理/&title=《SpringSecurity基本原理分析》 — LQQB's Blog (ง •̀_•́)ง&pic=http://qbqb.pro/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://qbqb.pro/2018/08/31/SpringSecurity基本原理/&title=《SpringSecurity基本原理分析》 — LQQB's Blog (ง •̀_•́)ง&source=SpringSecurity 是一个能够基于 Spring 的企业应用系统提供声明式的安全框架" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://qbqb.pro/2018/08/31/SpringSecurity基本原理/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《SpringSecurity基本原理分析》 — LQQB's Blog (ง •̀_•́)ง&url=http://qbqb.pro/2018/08/31/SpringSecurity基本原理/&via=http://qbqb.pro" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://qbqb.pro/2018/08/31/SpringSecurity基本原理/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between flex-row-reverse">
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="../../27/记一次git错误解决，回顾git常用命令/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">记一次git错误解决</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+<section class="comments" id="comments">
+    <!-- UY BEGIN -->
+    <div id="uyan_frame"></div>
+    <script src="http://v2.uyan.cc/code/uyan.js?uid=true"></script>
+    <!-- UY END -->
+</section>
+
+
+
+
+
+
+
+    <!-- Valine Comments -->
+    <div class="comments vcomment" id="comments"></div>
+    <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+    <script src="//unpkg.com/valine@latest/dist/Valine.min.js"></script>
+    <!-- Valine Comments script -->
+    <script>
+        var GUEST_INFO = ['nick','mail','link'];
+        var guest_info = 'nick,mail,link'.split(',').filter(function(item){
+          return GUEST_INFO.indexOf(item) > -1
+        });
+        new Valine({
+            el: '#comments',
+            notify: 'true' == 'true',
+            verify: 'true' == 'true',
+            appId: "NC6oB2Y4GRYy3pnG7XgQoQ5Y-gzGzoHsz",
+            appKey: "HKadLrkX3eEvexm5OkrkCfaP",
+            avatar: "mm",
+            placeholder: "Just go go",
+            guest_info: guest_info.length == 0 ? GUEST_INFO : guest_info,
+            pageSize: "10"
+        })
+    </script>
+    <!-- Valine Comments end -->
+
+
+
+
+
+
+
+</article>
+
+<div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        谢谢大爷~
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <div class="reward-content">
+        
+        <div class="reward-code">
+            <img id="rewardCode" src="../../../../img/wechat.png" alt="打赏二维码">
+        </div>
+        
+        <label class="reward-toggle">
+            <input id="rewardToggle" type="checkbox" class="reward-toggle-check"
+                data-wechat="../../../../img/wechat.png" data-alipay="../../../../img/alipay.png">
+            <div class="reward-toggle-ctrol">
+                <span class="reward-toggle-item wechat">微信</span>
+                <span class="reward-toggle-label"></span>
+                <span class="reward-toggle-item alipay">支付宝</span>
+            </div>
+        </label>
+        
+    </div>
+</div>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            
+                <span><a href="../../../../atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>博客内容遵循 <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>lqqb &copy; 2018</span>
+            <span>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
+            </span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://qbqb.pro/2018/08/31/SpringSecurity基本原理/&title=《SpringSecurity基本原理分析》 — LQQB's Blog (ง •̀_•́)ง&pic=http://qbqb.pro/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://qbqb.pro/2018/08/31/SpringSecurity基本原理/&title=《SpringSecurity基本原理分析》 — LQQB's Blog (ง •̀_•́)ง&source=SpringSecurity 是一个能够基于 Spring 的企业应用系统提供声明式的安全框架" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://qbqb.pro/2018/08/31/SpringSecurity基本原理/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《SpringSecurity基本原理分析》 — LQQB's Blog (ง •̀_•́)ง&url=http://qbqb.pro/2018/08/31/SpringSecurity基本原理/&via=http://qbqb.pro" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://qbqb.pro/2018/08/31/SpringSecurity基本原理/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACJUlEQVR42u3aQY6DMAwF0N7/0h1pthXwbdMZkbysKkqBl0omtvN6xeP9Oz6PfB7/PP/zzPNfHX17w8DAwHgs4306zm+cXy3HH51/dE0MDIx9GPOgmTx6AshDMwYGBsbR5e4KyskEYWBgYMwDbr4EzB8XAwMDY5LEJsvBfPxbLo6BgfFARm8x9zefv9jfwMDAeAijFyK/cWQUuDEwMJZmnJf4ewW4Sco62aiBgYGxD6PagLz3zPMk+eIPwMDAWJRRDbX53ExCbeEf6L0xMDAwHsvoJZnVUl1SUEuWlaM3BgYGxqMYk5S1t+Wi+rj5U2FgYKzKmC/g7kqDe+U5DAyMfRj5LavV+GoZrvorDAyMHRjJF5ONFNVtXpOgj4GBsSojTzgnBbg80e2FYwwMjLUZSfk+3zyRh+m8PVltKmBgYKzNSBaIzSCYb/CKi3oXJAwMjOUY8zbAXYWzyRITAwNjB0Y1ic3LZMn5efHucMowMDC2YSRltcntq9NXKMNhYGAsypi3HpOCWrWIVi38YWBg7MDopabzRLe6Be3ijYGBgbEoYwKYT0GVcRHKMTAwFmW8iyNPfasTMWkkYGBgrM3Ix3wTWL4ozJeSGBgY+zDyNkAvfc2D+Khsh4GBsQEjL/pXmwT5ZPWaEBgYGBjVglovAc4DdNTIxMDAwBgH02rYjRJgDAyMDRi9AtlkkVct/UcBFwMDY1FGbzPWPEznyHxxiYGBsRzjB0yYf614PoqAAAAAAElFTkSuQmCC" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: true };
+
+
+</script>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/main.min.js"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/search.min.js" async></script>
+
+
+
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+});
+</script>
+
+<script async src="//cdn.bootcss.com/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML" async></script>
+
+
+
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = '死鬼去哪里了！';
+            clearTimeout(titleTime);
+        } else {
+            document.title = '(つェ⊂)咦!又好了!';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
+
+
+
+</body>
+</html>
