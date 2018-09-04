@@ -1,0 +1,666 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    
+    <title>git常用命令 | LQQB&#39;s Blog (ง •̀_•́)ง | 将一个大问题分解为若干小问题，然后一个一个解决</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="git">
+    <meta name="description" content="Git做为一个开源的分布式版本控制系统,程序员的必备技能之一,今天就来总结一下关于Git的常用命令。">
+<meta name="keywords" content="git常用命令,Git,命令">
+<meta property="og:type" content="article">
+<meta property="og:title" content="git常用命令">
+<meta property="og:url" content="http://qbqb.pro/2018/09/04/git常用命令/index.html">
+<meta property="og:site_name" content="LQQB&#39;s Blog (ง •̀_•́)ง">
+<meta property="og:description" content="Git做为一个开源的分布式版本控制系统,程序员的必备技能之一,今天就来总结一下关于Git的常用命令。">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http://qbqb.pro/2018/09/04/git常用命令/git构造空间.png">
+<meta property="og:updated_time" content="2018-09-04T10:03:51.193Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="git常用命令">
+<meta name="twitter:description" content="Git做为一个开源的分布式版本控制系统,程序员的必备技能之一,今天就来总结一下关于Git的常用命令。">
+<meta name="twitter:image" content="http://qbqb.pro/2018/09/04/git常用命令/git构造空间.png">
+    
+        <link rel="alternate" type="application/atom+xml" title="LQQB&#39;s Blog (ง •̀_•́)ง" href="../../../../atom.xml">
+    
+    <link rel="shortcut icon" href="../../../../img/favicon.png">
+    <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(../../../../img/brand.jpg)">
+      <div class="brand">
+        <a href="../../../../index.html" class="avatar waves-effect waves-circle waves-light">
+          <img src="../../../../img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">lqqb</h5>
+          <a href="mailto:897680736@qq.com" title="897680736@qq.com" class="mail">897680736@qq.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="../../../../index.html"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="../../../../archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                归档
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="../../../../tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                标签
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/LQQB" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="http://weibo.com/qbmobq" target="_blank" >
+                <i class="icon icon-lg icon-weibo"></i>
+                微博
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">git常用命令</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">git常用命令</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2018-09-04T07:11:03.000Z" itemprop="datePublished" class="page-time">
+  2018-09-04
+</time>
+
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#一、新建代码库"><span class="post-toc-number">1.</span> <span class="post-toc-text">一、新建代码库</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#二、配置"><span class="post-toc-number">2.</span> <span class="post-toc-text">二、配置</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#三、增加-删除文件"><span class="post-toc-number">3.</span> <span class="post-toc-text">三、增加/删除文件</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#四、代码提交"><span class="post-toc-number">4.</span> <span class="post-toc-text">四、代码提交</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#五、分支"><span class="post-toc-number">5.</span> <span class="post-toc-text">五、分支</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#六、标签"><span class="post-toc-number">6.</span> <span class="post-toc-text">六、标签</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#七、查看信息"><span class="post-toc-number">7.</span> <span class="post-toc-text">七、查看信息</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#八、远程同步"><span class="post-toc-number">8.</span> <span class="post-toc-text">八、远程同步</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#九、撤销"><span class="post-toc-number">9.</span> <span class="post-toc-text">九、撤销</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#十、其他"><span class="post-toc-number">10.</span> <span class="post-toc-text">十、其他</span></a></li></ol>
+        </nav>
+    </aside>
+
+
+<article id="post-git常用命令"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">git常用命令</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2018-09-04 15:11:03" datetime="2018-09-04T07:11:03.000Z"  itemprop="datePublished">2018-09-04</time>
+
+            
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <p>Git做为一个开源的分布式版本控制系统,程序员的必备技能之一,今天就来总结一下关于Git的常用命令。<a id="more"></a><br>Git 相比于其他的版本控制系统来说，唯一的缺点可能就是学习周期相对较长，且不符合常规思维。不过当你习惯了这种管理方式，就能看到 Git 的优点了。下面这张图就可以描述出 Git 的工作过程，以及我们开发日常中经常用到的 Git 命令。当然日常使用只要记住下图6个命令，就可以了。但是熟练使用，恐怕要记住60～100个命令。<br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="/2018/09/04/git常用命令/git构造空间.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure></p>
+<blockquote>
+<p>参考自 <a href="http://www.ruanyifeng.com/blog/2015/12/git-cheat-sheet.html" target="_blank" rel="noopener">阮一峰的网络日志 》常用 Git 命令清单</a></p>
+</blockquote>
+<h3 id="一、新建代码库"><a href="#一、新建代码库" class="headerlink" title="一、新建代码库"></a>一、新建代码库</h3><blockquote>
+<p>#在当前目录新建一个Git代码库<br><strong>git init</strong></p>
+<p>#新建一个目录，将其初始化为Git代码库<br><strong>git init [project-name]</strong></p>
+<p>#下载一个项目和它的整个代码历史</p>
+<font color="Red">git clone [url]</font>
+</blockquote>
+<h3 id="二、配置"><a href="#二、配置" class="headerlink" title="二、配置"></a>二、配置</h3><p>Git的设置文件为.gitconfig，它可以在用户主目录下(全局配置)，也可以在项目目录下(项目配置)。</p>
+<blockquote>
+<p>#显示当前的Git配置<br><strong>git config –list</strong></p>
+<p>#编辑Git配置文件<br><strong>git config -e [–global]</strong></p>
+<p>#设置提交代码时的用户信息<br><strong>git config [–global] user.name “[name]”</strong><br><strong>git config [–global] user.email “[email address]”</strong></p>
+</blockquote>
+<h3 id="三、增加-删除文件"><a href="#三、增加-删除文件" class="headerlink" title="三、增加/删除文件"></a>三、增加/删除文件</h3><blockquote>
+<p>#添加指定文件到暂存区</p>
+<font color="Red">git  add [file1] [file2] …</font>
+
+<p>#添加指定目录到暂存区，包括子目录<br><strong>git add [dir]</strong></p>
+<p>#添加当前目录的所有文件到暂存区</p>
+<font color="Red">git add .</font>
+
+<p>#添加每个变化前，都会要求确认</p>
+<p>#对于同一个文件的多处变化，可以实现分次提交<br><strong>git add -p</strong></p>
+<p>#删除工作区文件，并且将这次删除放入暂存区<br><strong>git rm [file1] [file2] …</strong></p>
+<p>#停止追踪指定文件，但该文件会保留在工作区<br><strong>git rm –cached [file]</strong></p>
+<p>#改名文件，并且将这个改名放入暂存区<br><strong>git mv [file-original] [file-renamed]</strong></p>
+</blockquote>
+<h3 id="四、代码提交"><a href="#四、代码提交" class="headerlink" title="四、代码提交"></a>四、代码提交</h3><blockquote>
+<p>#提交暂存区到仓库区</p>
+<font color="Red">git commit -m [message]</font>
+
+<p>#提交暂存区的指定文件到仓库区</p>
+<font color="Red">git commit [file1] [file2] … -m [message]</font>
+
+<p>#提交工作区自上次commit之后的变化，直接到仓库区<br><strong>git commit -a</strong></p>
+<p>#提交时显示所有diff信息<br><strong>git commit -v</strong></p>
+<p>#使用一次新的commit，替代上一次提交</p>
+<p>#如果代码没有任何新变化，则用来改写上一次commit的提交信息<br><strong>git commit –amend -m [message]</strong></p>
+<p>#重做上一次commit，并包括指定文件的新变化<br><strong>git commit –amend [file1] [file2] …</strong></p>
+</blockquote>
+<h3 id="五、分支"><a href="#五、分支" class="headerlink" title="五、分支"></a>五、分支</h3><blockquote>
+<p>#列出所有本地分支</p>
+<font color="Red">git branch</font>
+
+<p>#列出所有远程分支<br><strong>git branch -r</strong></p>
+<p>#列出所有本地分支和远程分支</p>
+<font color="Red">git branch -a</font>
+
+<p>#新建一个分支，但依然停留在当前分支</p>
+<font color="Red">git branch [branch-name]</font>
+
+<p>#新建一个分支，并切换到该分支</p>
+<font color="Red">git checkout -b [branch]</font>
+
+<p>#新建一个分支，指向指定commit<br><strong>git branch [branch] [commit]</strong></p>
+<p>#新建一个分支，与指定的远程分支建立追踪关系<br><strong>git branch –track [branch] [remote-branch]</strong></p>
+<p>#切换到指定分支，并更新工作区<br><strong>git checkout [branch-name]</strong></p>
+<p>#切换到上一个分支</p>
+<font color="Red">git checkout -</font>
+
+<p>#建立追踪关系，在现有分支与指定的远程分支之间<br><strong>git branch –set-upstream [branch] [remote-branch]</strong></p>
+<p>#合并指定分支到当前分支<br><strong>git merge [branch]</strong></p>
+<p>#选择一个commit，合并进当前分支<br><strong>git cherry-pick [commit]</strong></p>
+<p>#删除分支<br><strong>git branch -d [branch-name]</strong></p>
+<p>#删除远程分支<br><strong>git push origin –delete [branch-name]</strong><br><strong>git branch -dr [remote/branch]</strong></p>
+</blockquote>
+<h3 id="六、标签"><a href="#六、标签" class="headerlink" title="六、标签"></a>六、标签</h3><blockquote>
+<p>#列出所有tag&gt; <strong>git tag</strong></p>
+<p>#新建一个tag在当前commit&gt; <strong>git tag [tag]</strong></p>
+<p>#新建一个tag在指定commit&gt; <strong>git tag [tag] [commit]</strong></p>
+<p>#删除本地tag&gt; <strong>git tag -d [tag]</strong></p>
+<p>#删除远程tag&gt; <strong>git push origin :refs/tags/[tagName]</strong></p>
+<p>#查看tag信息&gt; <strong>git show [tag]</strong></p>
+<p>#提交指定tag<br><strong>git push [remote] [tag]</strong></p>
+<p>#提交所有tag<br><strong>git push [remote] –tags</strong></p>
+<p>#新建一个分支，指向某个tag<br><strong>git checkout -b [branch] [tag]</strong></p>
+</blockquote>
+<h3 id="七、查看信息"><a href="#七、查看信息" class="headerlink" title="七、查看信息"></a>七、查看信息</h3><blockquote>
+<p>#显示 有变更的文件&gt; <font color="Red">git status</font></p>
+<p>#显示 当前分支的版本历史&gt; <font color="Red">git log</font></p>
+<p>#commit历史，以及每次commi&gt;发生变更的文件&gt; <strong>git log –stat</strong></p>
+<p>#搜索提交历史，根据关键词&gt; <strong>git log -S [keyword]</strong></p>
+<p>#显示某个commit之后的所有变动，每个commit占据一行&gt; <strong>git log [tag] HEAD –pretty=format:%s</strong></p>
+<p>#显示某个commit之后的所有变动，其”提交说明”必须符合搜索条件&gt; <strong>git log [tag] HEAD –grep feature</strong></p>
+<p>#显示某个文件的版本历史，包括文件改名&gt; <strong>git log –follow [file]&gt; git whatchanged [file]</strong></p>
+<p>#显示指定文件相关的每一次diff&gt; <strong>git log -p [file]</strong></p>
+<p>#显示过去5次提交&gt; <strong>git log -5 –pretty –oneline</strong></p>
+<p>#显示所有提交过的用户，按提交次数排序&gt; <strong>git shortlog -sn</strong></p>
+<p>#显示指定文件是什么人在什么时间修改过&gt; <strong>git blame [file]</strong></p>
+<p>#显示暂存区和工作区的差异&gt; <font color="Red">git diff</font></p>
+<p>#显示暂存区和上一个commit的差异&gt; <strong>git diff –cached [file]</strong></p>
+<p>#显示工作区与当前分支最新commit之间的差异&gt; <strong>git diff HEAD</strong></p>
+<p>#显示两次提交之间的差异&gt; <strong>git diff [first-branch]…[second-branch]</strong></p>
+<p>#显示今天你写了多少行代码&gt; <strong>git diff –shortstat “@{0 day ago}”</strong></p>
+<p>#显示某次提交的元数据和内容变化&gt; <font color="Red">git show commit</font></p>
+<p>#显示某次提交发生变化的文件&gt; <strong>git show –name-only [commit]</strong></p>
+<p>#显示某次提交时，某个文件的内容&gt; <strong>git show [commit]:[filename]</strong></p>
+<p>#显示当前分支的最近几次提交&gt; <strong>git reflog</strong></p>
+</blockquote>
+<h3 id="八、远程同步"><a href="#八、远程同步" class="headerlink" title="八、远程同步"></a>八、远程同步</h3><blockquote>
+<p>#下载远程仓库的所有变动&gt; <strong>git fetch [remote]</strong></p>
+<p>#显示所有远程仓库&gt; <strong>git remote -v</strong></p>
+<p>#显示某个远程仓库的信息&gt; <strong>git remote show [remote]</strong></p>
+<p>#增加一个新的远程仓库，并命名&gt; <strong>git remote add [shortname] [url]</strong></p>
+<p>#取回远程仓库的变化，并与本地分支合并&gt;  <font color="Red">git pull [remote] [branch]</font></p>
+<p>#上传本地指定分支到远程仓库&gt; <font color="Red">git push [remote] [branch]</font></p>
+</blockquote>
+<blockquote>
+<p>#强行推送当前分支到远程仓库，即使有冲突&gt; <strong>git push [remote] –force</strong></p>
+<p>#推送所有分支到远程仓库&gt; <strong>git push [remote] –all</strong></p>
+</blockquote>
+<h3 id="九、撤销"><a href="#九、撤销" class="headerlink" title="九、撤销"></a>九、撤销</h3><blockquote>
+<p>#恢复暂存区的指定文件到工作区&gt; <strong>git checkout [file]</strong></p>
+<p>#恢复某个commit的指定文件到暂存区和工作区&gt; <strong>git checkout [commit] [file]</strong></p>
+<p>#恢复暂存区的所有文件到工作区&gt; <strong>git checkout .</strong></p>
+<p>#重置暂存区的指定文件，与上一次commit保持一致，但工作区不变&gt; <font color="Red">git reset [file]</font></p>
+<p>#重置暂存区与工作区，与上一次commit保持一致&gt; <strong>git reset –hard</strong></p>
+<p>#重置当前分支的指针为指定commit，同时重置暂存区，但工作区不变&gt; <strong>git reset [commit]</strong></p>
+<p>#重置当前分支的HEAD为指定commit，同时重置暂存区和工作区，与指定commit一致&gt; <strong>git reset –hard [commit]</strong></p>
+<p>#重置当前HEAD为指定commit，但保持暂存区和工作区不变&gt; <strong>git reset –keep [commit]</strong></p>
+<p>#新建一个commit，用来撤销指定commit</p>
+<p>#后者的所有变化都将被前者抵消，并且应用到当前分支&gt; <strong>git revert [commit]</strong></p>
+<p>#暂时将未提交的变化移除，稍后再移入&gt; <strong>git stash&gt; git stash pop</strong></p>
+</blockquote>
+<h3 id="十、其他"><a href="#十、其他" class="headerlink" title="十、其他"></a>十、其他</h3><blockquote>
+<p>#生成一个可供发布的压缩包&gt; <strong>git archive</strong></p>
+</blockquote>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    
+    <div class="content">
+        
+<span class="post-time">
+    最后更新时间：<time datetime="2018-09-04T10:03:51.193Z" itemprop="dateUpdated">2018-09-04 18:03:51</time>
+</span><br>
+
+
+        
+    </div>
+    
+    <footer>
+        <a href="http://qbqb.pro">
+            <img src="../../../../img/avatar.jpg" alt="lqqb">
+            lqqb
+        </a>
+    </footer>
+</blockquote>
+
+        
+<div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
+
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../../../tags/git/">git</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://qbqb.pro/2018/09/04/git常用命令/&title=《git常用命令》 — LQQB's Blog (ง •̀_•́)ง&pic=http://qbqb.pro/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://qbqb.pro/2018/09/04/git常用命令/&title=《git常用命令》 — LQQB's Blog (ง •̀_•́)ง&source=Git做为一个开源的分布式版本控制系统,程序员的必备技能之一,今天就来总结一下关于Git的常用命令。" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://qbqb.pro/2018/09/04/git常用命令/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《git常用命令》 — LQQB's Blog (ง •̀_•́)ง&url=http://qbqb.pro/2018/09/04/git常用命令/&via=http://qbqb.pro" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://qbqb.pro/2018/09/04/git常用命令/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between flex-row-reverse">
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="../../../08/31/SpringSecurity基本原理/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">SpringSecurity基本原理分析</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+<section class="comments" id="comments">
+    <!-- UY BEGIN -->
+    <div id="uyan_frame"></div>
+    <script src="http://v2.uyan.cc/code/uyan.js?uid=true"></script>
+    <!-- UY END -->
+</section>
+
+
+
+
+
+
+
+    <!-- Valine Comments -->
+    <div class="comments vcomment" id="comments"></div>
+    <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+    <script src="//unpkg.com/valine@latest/dist/Valine.min.js"></script>
+    <!-- Valine Comments script -->
+    <script>
+        var GUEST_INFO = ['nick','mail','link'];
+        var guest_info = 'nick,mail,link'.split(',').filter(function(item){
+          return GUEST_INFO.indexOf(item) > -1
+        });
+        new Valine({
+            el: '#comments',
+            notify: 'true' == 'true',
+            verify: 'true' == 'true',
+            appId: "NC6oB2Y4GRYy3pnG7XgQoQ5Y-gzGzoHsz",
+            appKey: "HKadLrkX3eEvexm5OkrkCfaP",
+            avatar: "mm",
+            placeholder: "Just go go",
+            guest_info: guest_info.length == 0 ? GUEST_INFO : guest_info,
+            pageSize: "10"
+        })
+    </script>
+    <!-- Valine Comments end -->
+
+
+
+
+
+
+
+</article>
+
+<div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        谢谢大爷~
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <div class="reward-content">
+        
+        <div class="reward-code">
+            <img id="rewardCode" src="../../../../img/wechat.png" alt="打赏二维码">
+        </div>
+        
+        <label class="reward-toggle">
+            <input id="rewardToggle" type="checkbox" class="reward-toggle-check"
+                data-wechat="../../../../img/wechat.png" data-alipay="../../../../img/alipay.png">
+            <div class="reward-toggle-ctrol">
+                <span class="reward-toggle-item wechat">微信</span>
+                <span class="reward-toggle-label"></span>
+                <span class="reward-toggle-item alipay">支付宝</span>
+            </div>
+        </label>
+        
+    </div>
+</div>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            
+                <span><a href="../../../../atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>博客内容遵循 <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>lqqb &copy; 2018</span>
+            <span>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
+            </span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://qbqb.pro/2018/09/04/git常用命令/&title=《git常用命令》 — LQQB's Blog (ง •̀_•́)ง&pic=http://qbqb.pro/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://qbqb.pro/2018/09/04/git常用命令/&title=《git常用命令》 — LQQB's Blog (ง •̀_•́)ง&source=Git做为一个开源的分布式版本控制系统,程序员的必备技能之一,今天就来总结一下关于Git的常用命令。" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://qbqb.pro/2018/09/04/git常用命令/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《git常用命令》 — LQQB's Blog (ง •̀_•́)ง&url=http://qbqb.pro/2018/09/04/git常用命令/&via=http://qbqb.pro" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://qbqb.pro/2018/09/04/git常用命令/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACLUlEQVR42u3aS47jMAwFwNz/0p4DNOw8ksoAkkurAG0kKi/Y/H0+8bluzt9n7j7f/fXuVz6/OBgYGNsyrsfzfJUJL0Hmv4KBgfEGxl0Ee37mOVB++eE4WD8/j4GBgZEEwXkIxsDAwPgFIw+pk2cwMDAwqkVs0u9Krt4Lx8tqcQwMjA0Zedf9/3/+yXwDAwNjK8ZVPGsHltXwensrDAyMoxnVtK/a6K8uVeRpHwYGBsYk4+qVpvkqRrNriIGBsTlj1ThzErLnCx8YGBhnM6oB9zkgVkeVvRe0IDXEwMDYlpEnfHlZOxk6FgpdDAyMQxmTlYhkDJB8Z2+x41Pd3cDAwNiWMakHq+3+vBiupo8YGBjvYUyCZm95otfU+/I9GBgYhzJ6bbUkWOfIPOh/CbUYGBjHMSZN/6QZl2OSFtuCWhwDA2NDRnKJ6vJE79L5S4z+b2BgYBzE6C1jJezesLM5kMDAwHgBY15Y5pfupZVfboiBgXE0Y57q5dPRtUsVGBgYb2Pkl0iabpMwOnqhGBgYL2NULzoZVeYjhygpxMDAOJrRHBwWlzaqbbXC8xgYGIcyruKprmisSg1H9TcGBsbmjEkwTVpgvSQvWbBokjAwMLZl5EG2utrVSx/zgFtIEDEwMI5g9JbDqsjqGkfhVhgYGBjxCkWyYFEdmha6hhgYGBitIWVvCFp9HRgYGG9gVIcBeZGZBNwFg08MDIyjGdXScbKisQrQnHJgYGDsx/gHdqz6CF7jiUcAAAAASUVORK5CYII=" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: true };
+
+
+</script>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/main.min.js"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/search.min.js" async></script>
+
+
+
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+});
+</script>
+
+<script async src="//cdn.bootcss.com/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML" async></script>
+
+
+
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = '死鬼去哪里了！';
+            clearTimeout(titleTime);
+        } else {
+            document.title = '(つェ⊂)咦!又好了!';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
+
+
+
+</body>
+</html>
