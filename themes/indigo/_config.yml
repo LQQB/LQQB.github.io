@@ -92,7 +92,10 @@ google_analytics: false
 google_site_verification: false
 
 # sogou站长验证 http://zhanzhang.sogou.com/
-sogou_site_verification: false
+sogou_site_verification: 
+
+# 百度推广验证
+baidu_union_verify: 71dac22f663043c4d921af26e092c87f
 
 # less
 less:
