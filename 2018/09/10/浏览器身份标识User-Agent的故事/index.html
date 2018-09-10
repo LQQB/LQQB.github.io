@@ -1,0 +1,551 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    
+    <title>浏览器身份标识User-Agent的故事 | LQQB&#39;s Blog (ง •̀_•́)ง | 将一个大问题分解为若干小问题，然后一个一个解决</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="记录,浏览器">
+    <meta name="description" content="你是否好奇标识浏览器身份的User-Agent，为什么每个浏览器都有Mozilla字样？">
+<meta name="keywords" content="记录,浏览器">
+<meta property="og:type" content="article">
+<meta property="og:title" content="浏览器身份标识User-Agent的故事">
+<meta property="og:url" content="http://qbqb.pro/2018/09/10/浏览器身份标识User-Agent的故事/index.html">
+<meta property="og:site_name" content="LQQB&#39;s Blog (ง •̀_•́)ง">
+<meta property="og:description" content="你是否好奇标识浏览器身份的User-Agent，为什么每个浏览器都有Mozilla字样？">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2018-09-10T06:35:32.718Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="浏览器身份标识User-Agent的故事">
+<meta name="twitter:description" content="你是否好奇标识浏览器身份的User-Agent，为什么每个浏览器都有Mozilla字样？">
+    
+        <link rel="alternate" type="application/atom+xml" title="LQQB&#39;s Blog (ง •̀_•́)ง" href="../../../../atom.xml">
+    
+    <link rel="shortcut icon" href="../../../../img/favicon.png">
+    <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(../../../../img/brand.jpg)">
+      <div class="brand">
+        <a href="../../../../index.html" class="avatar waves-effect waves-circle waves-light">
+          <img src="../../../../img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">lqqb</h5>
+          <a href="mailto:897680736@qq.com" title="897680736@qq.com" class="mail">897680736@qq.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="../../../../index.html"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="../../../../archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                归档
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="../../../../tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                标签
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/LQQB" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="http://weibo.com/qbmobq" target="_blank" >
+                <i class="icon icon-lg icon-weibo"></i>
+                微博
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">浏览器身份标识User-Agent的故事</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">浏览器身份标识User-Agent的故事</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2018-09-10T03:38:15.000Z" itemprop="datePublished" class="page-time">
+  2018-09-10
+</time>
+
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#举例"><span class="post-toc-number">1.</span> <span class="post-toc-text">举例:</span></a></li></ol></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#附各大浏览器诞生年表："><span class="post-toc-number"></span> <span class="post-toc-text">附各大浏览器诞生年表：</span></a>
+        </nav>
+    </aside>
+
+
+<article id="post-浏览器身份标识User-Agent的故事"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">浏览器身份标识User-Agent的故事</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2018-09-10 11:38:15" datetime="2018-09-10T03:38:15.000Z"  itemprop="datePublished">2018-09-10</time>
+
+            
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <p>你是否好奇标识浏览器身份的User-Agent，为什么每个浏览器都有Mozilla字样？<a id="more"></a></p>
+<blockquote>
+<p>原文：<a href="http://webaim.org/blog/user-agent-string-history/" target="_blank" rel="noopener">http://webaim.org/blog/user-agent-string-history/</a><br>译文：<a href="http://www.cnblogs.com/ifantastic/p/3481231.html" target="_blank" rel="noopener">http://www.cnblogs.com/ifantastic/p/3481231.html</a><br>译者：iFantasticMe</p>
+</blockquote>
+<h5 id="举例"><a href="#举例" class="headerlink" title="举例:"></a>举例:</h5><blockquote>
+<p><strong>Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/27.0.1453.94 Safari/537.36</strong><br><strong>Mozilla/5.0 (Linux; U; Android 4.1.2; zh-tw; GT-I9300 Build/JZO54K) AppleWebKit/534.30 (KHTML, like Gecko) Version/4.0 Mobile Safari/534.30</strong><br><strong>Mozilla/5.0 (Windows NT 6.1; WOW64; rv:20.0) Gecko/20100101 Firefox/20.0</strong><br><strong>Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 6.0; Trident/5.0)</strong></p>
+</blockquote>
+<p>故事还得从头说起，最初的主角叫NCSA Mosaic，简称Mosaic（马赛克），是1992年末位于伊利诺伊大学厄巴纳-香槟分校的国家超级计算机应用中心（National Center for Supercomputing Applications，简称NCSA）开发，并于1993年发布的一款浏览器。它自称“NCSA_Mosaic/2.0（Windows 3.1）”，Mosaic可以同时展示文字和图片，从此浏览器变得有趣多了。</p>
+<p>然而很快就出现了另一个浏览器，这就是著名的Mozilla，中文名称摩斯拉。一说 Mozilla = Mosaic + Killer，意为Mosaic杀手，也有说法是 Mozilla = Mosaic &amp; Godzilla，意为马赛克和哥斯拉，而Mozilla最初的吉祥物是只绿色大蜥蜴，后来更改为红色暴龙，跟哥斯拉长得一样。<br>但Mosaic对此非常不高兴，于是后来Mozilla更名为Netscape，也就是网景。Netscape自称“Mozilla/1.0(Win3.1)”，事情开始变得更加有趣。网景支持框架（frame），由于大家的喜欢框架变得流行起来，但是Mosaic不支持框架，于是网站管理员探测user agent，对Mozilla浏览器发送含有框架的页面，对非Mozilla浏览器发送没有框架的页面。</p>
+<p>后来网景拿微软寻开心，称微软的Windows是“没有调试过的硬件驱动程序”。微软很生气，后果很严重。此后微软开发了自己的浏览器，这就是Internet Explorer，并希望它可以成为Netscape Killer。IE同样支持框架，但它不是Mozilla，所以它总是收不到含有框架的页面。微软很郁闷很快就沉不住气了，它不想等到所有的网站管理员都了解IE并且给IE发送含有框架的页面，它选择宣布IE是兼容Mozilla，并且模仿Netscape称IE为“Mozilla/1.22(compatible; MSIE 2.0; Windows 95)”，于是IE可以收到含有框架的页面了，所有微软的人都嗨皮了，但是网站管理员开始晕了。</p>
+<p>因为微软将IE和Windows捆绑销售，并且把IE做得比Netscape更好，于是第一次浏览器血腥大战爆发了，结果是Netscape以失败退出历史舞台，微软更加嗨皮。但没想到Netscape居然以Mozilla的名义重生了，并且开发了Gecko，这次它自称为“Mozilla/5.0(Windows; U; Windows NT 5.0; en-US; rv:1.1) Gecko/20020826”。Gecko是一款渲染引擎并且很出色。Mozilla后来变成了Firefox，并自称“Mozilla/5.0 (Windows; U; Windows NT 5.1; sv-SE; rv:1.7.5) Gecko/20041108、Firefox/1.0”。Firefox性能很出色，Gecko也开始攻城略地，其他新的浏览器使用了它的代码，并且将它们自己称为“Mozilla/5.0 (Macintosh; U; PPC Mac OS X Mach-O; en-US; rv:1.7.2) Gecko/20040825 Camino/0.8.1”，以及“Mozilla/5.0 (Windows; U; Windows NT 5.1; de; rv:1.8.1.8) Gecko/20071008 SeaMonkey/1.0”，每一个都将自己装作Mozilla，而它们全都使用Gecko。</p>
+<p>Gecko很出色，而IE完全跟不上它，因此user agent探测规则变了，使用Gecko的浏览器被发送了更好的代码，而其他浏览器则没有这种待遇。Linux的追随者对此很难过，因为他们编写了Konqueror，它的引擎是KHTML，他们认为KHTML和Gecko一样出色，但却因为不是Gecko而得不到好的页面，于是Konqueror为得到更好的页面开始将自己伪装成“like Gecko”，并自称为“Mozilla/5.0 (compatible; Konqueror/3.2; FreeBSD) (KHTML, like Gecko)”。自此user agent变得更加混乱。</p>
+<p>这时更有Opera跳出来说“毫无疑问，我们应该让用户来决定他们想让我们伪装成哪个浏览器。”于是Opera干脆创建了菜单项让用户自主选择让Opera浏览器变成“Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1; en) Opera 9.51”，或者“Mozilla/5.0 (Windows NT 6.0; U; en; rv:1.8.1) Gecko/20061208 Firefox/2.0.0 Opera 9.51”， 或者“Opera/9.51 (Windows NT 5.1; U; en)”。</p>
+<p>后来苹果开发了Safari浏览器，并使用KHTML作为渲染引擎，但苹果加入了许多新的特性，于是苹果从KHTML另辟分支称之为WebKit，但它又不想抛弃那些为KHTML编写的页面，于是Safari自称为“Mozilla/5.0 (Macintosh; U; PPC Mac OS X; de-de) AppleWebKit/85.7 (KHTML, like Gecko) Safari/85.5”，这进一步加剧了user agent的混乱局面。</p>
+<p>因为微软十分忌惮Firefox，于是IE重装上阵，这次它自称为“Mozilla/4.0 (compatible; MSIE 8.0; Windows NT 6.0) ”，并且渲染效果同样出色，但是需要网站管理员的指令它这么做才行。</p>
+<p>再后来，谷歌开发了Chrome浏览器，Chrome使用Webkit作为渲染引擎，和Safari之前一样，它想要那些为Safari编写的页面，于是它伪装成了Safari。于是Chrome使用WebKit，并将自己伪装成Safari，WebKit伪装成KHTML，KHTML伪装成Gecko，最后所有的浏览器都伪装成了Mozilla，这就是为什么所有的浏览器User-Agent里都有Mozilla。Chrome自称为“Mozilla/5.0 (Windows; U; Windows NT 5.1; en-US) AppleWebKit/525.13 (KHTML, like Gecko) Chrome/0.2.149.27 Safari/525.13”。</p>
+<p>因为以上这段历史，现在的User-Agent字符串变得一团糟，几乎根本无法彰显它最初的意义。追根溯源，微软可以说是这一切的始作俑者，但后来每一个人都在试图假扮别人，最终把User-Agent搞得混乱不堪。</p>
+<p>一句话结论：因为网站开发者可能会因为你是某浏览器（这里是 Mozilla），所以输出一些特殊功能的程序代码（这里指好的特殊功能），所以当其它浏览器也支持这种好功能时，就试图去模仿 Mozilla 浏览器让网站输出跟 Mozilla 一样的内容，而不是输出被阉割功能的程序代码。<code>大家都为了让网站输出最好的内容，都试图假装自己是 Mozilla ,一个已经不存在的浏览器……</code></p>
+<h4 id="附各大浏览器诞生年表："><a href="#附各大浏览器诞生年表：" class="headerlink" title="附各大浏览器诞生年表："></a>附各大浏览器诞生年表：</h4><blockquote>
+<p><strong>1993年1月23日：Mosaic</strong><br><strong>1994年12月：Netscape</strong><br><strong>1994年：Opera</strong><br><strong>1995年8月16日：Internet Explorer</strong><br><strong>1996年10月14日：Kongqueror</strong><br><strong>2003年1月7日：Safari</strong><br><strong>2008年9月2日：Chrome</strong></p>
+</blockquote>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    
+    <div class="content">
+        
+<span class="post-time">
+    最后更新时间：<time datetime="2018-09-10T06:35:32.718Z" itemprop="dateUpdated">2018-09-10 14:35:32</time>
+</span><br>
+
+
+        
+    </div>
+    
+    <footer>
+        <a href="http://qbqb.pro">
+            <img src="../../../../img/avatar.jpg" alt="lqqb">
+            lqqb
+        </a>
+    </footer>
+</blockquote>
+
+        
+<div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
+
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../../../tags/浏览器/">浏览器</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../../../tags/记录/">记录</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://qbqb.pro/2018/09/10/浏览器身份标识User-Agent的故事/&title=《浏览器身份标识User-Agent的故事》 — LQQB's Blog (ง •̀_•́)ง&pic=http://qbqb.pro/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://qbqb.pro/2018/09/10/浏览器身份标识User-Agent的故事/&title=《浏览器身份标识User-Agent的故事》 — LQQB's Blog (ง •̀_•́)ง&source=你是否好奇标识浏览器身份的User-Agent，为什么每个浏览器都有Mozilla字样？" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://qbqb.pro/2018/09/10/浏览器身份标识User-Agent的故事/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《浏览器身份标识User-Agent的故事》 — LQQB's Blog (ง •̀_•́)ง&url=http://qbqb.pro/2018/09/10/浏览器身份标识User-Agent的故事/&via=http://qbqb.pro" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://qbqb.pro/2018/09/10/浏览器身份标识User-Agent的故事/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between flex-row-reverse">
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="../../04/git常用命令/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">git常用命令</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+<section class="comments" id="comments">
+    <!-- UY BEGIN -->
+    <div id="uyan_frame"></div>
+    <script src="http://v2.uyan.cc/code/uyan.js?uid=true"></script>
+    <!-- UY END -->
+</section>
+
+
+
+
+
+
+
+    <!-- Valine Comments -->
+    <div class="comments vcomment" id="comments"></div>
+    <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+    <script src="//unpkg.com/valine@latest/dist/Valine.min.js"></script>
+    <!-- Valine Comments script -->
+    <script>
+        var GUEST_INFO = ['nick','mail','link'];
+        var guest_info = 'nick,mail,link'.split(',').filter(function(item){
+          return GUEST_INFO.indexOf(item) > -1
+        });
+        new Valine({
+            el: '#comments',
+            notify: 'true' == 'true',
+            verify: 'true' == 'true',
+            appId: "NC6oB2Y4GRYy3pnG7XgQoQ5Y-gzGzoHsz",
+            appKey: "HKadLrkX3eEvexm5OkrkCfaP",
+            avatar: "mm",
+            placeholder: "Just go go",
+            guest_info: guest_info.length == 0 ? GUEST_INFO : guest_info,
+            pageSize: "10"
+        })
+    </script>
+    <!-- Valine Comments end -->
+
+
+
+
+
+
+
+</article>
+
+<div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        谢谢大爷~
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <div class="reward-content">
+        
+        <div class="reward-code">
+            <img id="rewardCode" src="../../../../img/wechat.png" alt="打赏二维码">
+        </div>
+        
+        <label class="reward-toggle">
+            <input id="rewardToggle" type="checkbox" class="reward-toggle-check"
+                data-wechat="../../../../img/wechat.png" data-alipay="../../../../img/alipay.png">
+            <div class="reward-toggle-ctrol">
+                <span class="reward-toggle-item wechat">微信</span>
+                <span class="reward-toggle-label"></span>
+                <span class="reward-toggle-item alipay">支付宝</span>
+            </div>
+        </label>
+        
+    </div>
+</div>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            
+                <span><a href="../../../../atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>博客内容遵循 <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>lqqb &copy; 2018</span>
+            <span>
+                
+                <a href="http://www.miitbeian.gov.cn/" target="_blank">闽ICP备17018462号-1</a><br>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
+            </span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://qbqb.pro/2018/09/10/浏览器身份标识User-Agent的故事/&title=《浏览器身份标识User-Agent的故事》 — LQQB's Blog (ง •̀_•́)ง&pic=http://qbqb.pro/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://qbqb.pro/2018/09/10/浏览器身份标识User-Agent的故事/&title=《浏览器身份标识User-Agent的故事》 — LQQB's Blog (ง •̀_•́)ง&source=你是否好奇标识浏览器身份的User-Agent，为什么每个浏览器都有Mozilla字样？" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://qbqb.pro/2018/09/10/浏览器身份标识User-Agent的故事/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《浏览器身份标识User-Agent的故事》 — LQQB's Blog (ง •̀_•́)ง&url=http://qbqb.pro/2018/09/10/浏览器身份标识User-Agent的故事/&via=http://qbqb.pro" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://qbqb.pro/2018/09/10/浏览器身份标识User-Agent的故事/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAN4AAADeCAAAAAB3DOFrAAACpElEQVR42u3aQW4CMQwF0Ln/pekWqQW+7XjK4s2qAprkBSkxtq8rfh5PT/L687u//84/+fj1XBsPHh4e3mDpr4bLpz/17vtNTNaMh4eHt82rHuvvt2ByxE+uGTw8PLxv5r0fIblUNsbBw8PD+zZeHvi+X+h8Xjw8PLxv4OWJg3yJ+bGejL+ea8HDw8OLeXkV6Xv+Xqnv4eHh4Y2r6kmInJSmJmH3aLV4eHh4C7xe68CkcaoaXuch+8ttwsPDw1vj5cs61T51ajvw8PDw7uRNYL1UbK8JoDrjge8NDw8PL+blsGrIW92O5PUPW4mHh4e3wKv+vJ+kdDcKYMnlgYeHh7fNmy+398qpJgY8PDy8e3j5odwLlHvphjwZ8eHqwsPDw1vmVdMKeTmqmURotRRc+dB4eHh4RV5emsoD30nz1tmkBh4eHt4Gb5JQ6LULnC2MRbPj4eHh3c7rtU9VL4Dk870GLzw8PLx7eKcC3LxBYdLUVQ6p8fDw8Aa8XqB8FnCqpeCPcfDw8PAWeEkJaiPVm8wYtQXkPwnw8PDwDvGqpEmBv9rkmmzoh3nx8PDwlnmP4lMtSk3KYM2kMB4eHt4aL78e5sF39WpJRnu5EXh4eHgLvCRgrZb5q0vML4NqaxceHh7ePbz8n6tl/l6R7ECKBA8PD2+ZV000TFqveo0F5bQFHh4e3hpvnphIjvI8lXCqEQEPDw/vLK9X9JoEypPvIW9K+KMAhoeHh3eIVz1286M8D3+TstY8BYyHh4d3lnequaq3o3PAh28MDw8Pb42XTDxph+pdQlfrKbcO4OHh4S3zkgVNimfV4DtK5uLh4eH9Ky+5BgrTH0pVNLPCeHh4eANeb+hqyb+a3p2PjIeHh7fBq/68T4aofr6a2O1tAR4eHt6Y9wPQgXiV4eAFsAAAAABJRU5ErkJggg==" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: true };
+
+
+</script>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/main.min.js"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/search.min.js" async></script>
+
+
+
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+});
+</script>
+
+<script async src="//cdn.bootcss.com/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML" async></script>
+
+
+
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = '死鬼去哪里了！';
+            clearTimeout(titleTime);
+        } else {
+            document.title = '(つェ⊂)咦!又好了!';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
+
+
+
+</body>
+</html>
