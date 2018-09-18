@@ -1,0 +1,554 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    
+    <title>Java集合——集合框架汇总 | LQQB&#39;s Blog (ง •̀_•́)ง | 将一个大问题分解为若干小问题，然后一个一个解决</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="Java">
+    <meta name="description" content="集合是在任何语言中都是重要的基础知识，不同的集合在实现上采用了各种不同的数据结构。">
+<meta name="keywords" content="Java基础,Java集合">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Java集合——集合框架汇总">
+<meta property="og:url" content="http://qbqb.pro/2018/09/18/Java集合——集合框架汇总/index.html">
+<meta property="og:site_name" content="LQQB&#39;s Blog (ง •̀_•́)ง">
+<meta property="og:description" content="集合是在任何语言中都是重要的基础知识，不同的集合在实现上采用了各种不同的数据结构。">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http://qbqb.pro/2018/09/18/Java集合——集合框架汇总/Java集合框架结构.png">
+<meta property="og:updated_time" content="2018-09-18T07:19:59.125Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Java集合——集合框架汇总">
+<meta name="twitter:description" content="集合是在任何语言中都是重要的基础知识，不同的集合在实现上采用了各种不同的数据结构。">
+<meta name="twitter:image" content="http://qbqb.pro/2018/09/18/Java集合——集合框架汇总/Java集合框架结构.png">
+    
+        <link rel="alternate" type="application/atom+xml" title="LQQB&#39;s Blog (ง •̀_•́)ง" href="../../../../atom.xml">
+    
+    <link rel="shortcut icon" href="../../../../img/favicon.png">
+    <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(../../../../img/brand.jpg)">
+      <div class="brand">
+        <a href="../../../../index.html" class="avatar waves-effect waves-circle waves-light">
+          <img src="../../../../img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">lqqb</h5>
+          <a href="mailto:897680736@qq.com" title="897680736@qq.com" class="mail">897680736@qq.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="../../../../index.html"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="../../../../archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                归档
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="../../../../tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                标签
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/LQQB" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="http://weibo.com/qbmobq" target="_blank" >
+                <i class="icon icon-lg icon-weibo"></i>
+                微博
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">Java集合——集合框架汇总</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">Java集合——集合框架汇总</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2018-09-18T03:18:59.000Z" itemprop="datePublished" class="page-time">
+  2018-09-18
+</time>
+
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#层次关系"><span class="post-toc-number">1.</span> <span class="post-toc-text">层次关系</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#Collection-lt-E-gt"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">Collection&lt; E &gt;</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#Iterable"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">Iterable</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#Map-lt-K-V-gt"><span class="post-toc-number">1.3.</span> <span class="post-toc-text">Map&lt;K,V&gt;</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#List-lt-E-gt-（有序、可重复）"><span class="post-toc-number">1.4.</span> <span class="post-toc-text">List&lt; E &gt;（有序、可重复）</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#Set-lt-E-gt-（无序、不能重复）"><span class="post-toc-number">1.5.</span> <span class="post-toc-text">Set&lt; E &gt;（无序、不能重复）</span></a></li></ol></li></ol>
+        </nav>
+    </aside>
+
+
+<article id="post-Java集合——集合框架汇总"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">Java集合——集合框架汇总</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2018-09-18 11:18:59" datetime="2018-09-18T03:18:59.000Z"  itemprop="datePublished">2018-09-18</time>
+
+            
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <p>集合是在任何语言中都是重要的基础知识，不同的集合在实现上采用了各种不同的数据结构。<a id="more"></a>接下来就从Java集合框架的层次关系开始入手，来理解Java的集合框架。</p>
+<h3 id="层次关系"><a href="#层次关系" class="headerlink" title="层次关系"></a>层次关系</h3><p>一个好的框架会在设计上考虑将接口与实现分离，而 Java集合框架从接口的整体设计就可以快速明确这个框架的作用和功能。<br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="/2018/09/18/Java集合——集合框架汇总/Java集合框架结构.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure><br>通过上面的接口框架图可以看出: Collection<e> 和 Map&lt;K,V&gt; 是java.util 框架中的两个根接口，代表了两种不同的数据结构:集合和映射。</e></p>
+<p>下面我们来分别来说下这些核心接口的基本功能:</p>
+<h4 id="Collection-lt-E-gt"><a href="#Collection-lt-E-gt" class="headerlink" title="Collection&lt; E &gt;"></a>Collection&lt; E &gt;</h4><p>Collection&lt; E &gt;接口是集合的根接口，他代表了一组元素。但是Collection<e>并不关心这组元素是否重复，是否有序。他只提供操作对这组元素的基本操作方法，怎么添加，怎么删除，怎么循环。所有的实现类都必须提供这些方法。</e></p>
+<h4 id="Iterable"><a href="#Iterable" class="headerlink" title="Iterable"></a>Iterable<t></t></h4><p>所有的集合类，都实现了Iterator方法<code>Iterator&lt;E&gt; iterator()</code> ，Iterator&lt; E &gt; 这是一个用于遍历集合中元素的接口，主要包含以下三种方法：</p>
+<ol>
+<li>hasNext() 是否还有下一个元素。</li>
+<li>next() 返回下一个元素。</li>
+<li>remove() 删除当前元素。</li>
+</ol>
+<h4 id="Map-lt-K-V-gt"><a href="#Map-lt-K-V-gt" class="headerlink" title="Map&lt;K,V&gt;"></a>Map&lt;K,V&gt;</h4><p>API说明上关于Map&lt;K,V&gt;的说明非常精炼：从键映射到值的一个对象，键不能重复，每个键至多映射到一个值。 从键不能重复这个特点很容易想到通过Set<e>来实现键，他的接口方法Set<k> keySet()也证明了这点</k></e></p>
+<h4 id="List-lt-E-gt-（有序、可重复）"><a href="#List-lt-E-gt-（有序、可重复）" class="headerlink" title="List&lt; E &gt;（有序、可重复）"></a>List&lt; E &gt;（有序、可重复）</h4><p>List里存放的对象是有序的，同时也是可以重复的，List关注的是索引，拥有一系列和索引相关的方法，查询速度快。因为往list集合里插入或删除数据时，会伴随着后面数据的移动，所有插入删除数据速度慢。</p>
+<h4 id="Set-lt-E-gt-（无序、不能重复）"><a href="#Set-lt-E-gt-（无序、不能重复）" class="headerlink" title="Set&lt; E &gt;（无序、不能重复）"></a>Set&lt; E &gt;（无序、不能重复）</h4><p>Set里存放的对象是无序，不能重复的，集合中的对象不按特定的方式排序，只是简单地把对象加入集合中。</p>
+<blockquote>
+<p>除了上述的接口以及抽象类以外，java.util框架还提供了一些其他结构，在使用频率上不是太高，比如Queue&lt; E &gt; ，Deque&lt; E &gt; 等。</p>
+</blockquote>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    
+    <div class="content">
+        
+<span class="post-time">
+    最后更新时间：<time datetime="2018-09-18T07:19:59.125Z" itemprop="dateUpdated">2018-09-18 15:19:59</time>
+</span><br>
+
+
+        
+    </div>
+    
+    <footer>
+        <a href="http://qbqb.pro">
+            <img src="../../../../img/avatar.jpg" alt="lqqb">
+            lqqb
+        </a>
+    </footer>
+</blockquote>
+
+        
+<div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
+
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../../../tags/Java/">Java</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://qbqb.pro/2018/09/18/Java集合——集合框架汇总/&title=《Java集合——集合框架汇总》 — LQQB's Blog (ง •̀_•́)ง&pic=http://qbqb.pro/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://qbqb.pro/2018/09/18/Java集合——集合框架汇总/&title=《Java集合——集合框架汇总》 — LQQB's Blog (ง •̀_•́)ง&source=集合是在任何语言中都是重要的基础知识，不同的集合在实现上采用了各种不同的数据结构。" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://qbqb.pro/2018/09/18/Java集合——集合框架汇总/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Java集合——集合框架汇总》 — LQQB's Blog (ง •̀_•́)ง&url=http://qbqb.pro/2018/09/18/Java集合——集合框架汇总/&via=http://qbqb.pro" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://qbqb.pro/2018/09/18/Java集合——集合框架汇总/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between flex-row-reverse">
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="../../10/浏览器身份标识User-Agent的故事/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">浏览器身份标识User-Agent的故事</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+<section class="comments" id="comments">
+    <!-- UY BEGIN -->
+    <div id="uyan_frame"></div>
+    <script src="http://v2.uyan.cc/code/uyan.js?uid=true"></script>
+    <!-- UY END -->
+</section>
+
+
+
+
+
+
+
+    <!-- Valine Comments -->
+    <div class="comments vcomment" id="comments"></div>
+    <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+    <script src="//unpkg.com/valine@latest/dist/Valine.min.js"></script>
+    <!-- Valine Comments script -->
+    <script>
+        var GUEST_INFO = ['nick','mail','link'];
+        var guest_info = 'nick,mail,link'.split(',').filter(function(item){
+          return GUEST_INFO.indexOf(item) > -1
+        });
+        new Valine({
+            el: '#comments',
+            notify: 'true' == 'true',
+            verify: 'true' == 'true',
+            appId: "NC6oB2Y4GRYy3pnG7XgQoQ5Y-gzGzoHsz",
+            appKey: "HKadLrkX3eEvexm5OkrkCfaP",
+            avatar: "mm",
+            placeholder: "Just go go",
+            guest_info: guest_info.length == 0 ? GUEST_INFO : guest_info,
+            pageSize: "10"
+        })
+    </script>
+    <!-- Valine Comments end -->
+
+
+
+
+
+
+
+</article>
+
+<div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        谢谢大爷~
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <div class="reward-content">
+        
+        <div class="reward-code">
+            <img id="rewardCode" src="../../../../img/wechat.png" alt="打赏二维码">
+        </div>
+        
+        <label class="reward-toggle">
+            <input id="rewardToggle" type="checkbox" class="reward-toggle-check"
+                data-wechat="../../../../img/wechat.png" data-alipay="../../../../img/alipay.png">
+            <div class="reward-toggle-ctrol">
+                <span class="reward-toggle-item wechat">微信</span>
+                <span class="reward-toggle-label"></span>
+                <span class="reward-toggle-item alipay">支付宝</span>
+            </div>
+        </label>
+        
+    </div>
+</div>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            
+                <span><a href="../../../../atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>博客内容遵循 <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>lqqb &copy; 2018</span>
+            <span>
+                
+                <a href="http://www.miitbeian.gov.cn/" target="_blank">闽ICP备17018462号-1</a><br>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
+            </span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://qbqb.pro/2018/09/18/Java集合——集合框架汇总/&title=《Java集合——集合框架汇总》 — LQQB's Blog (ง •̀_•́)ง&pic=http://qbqb.pro/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://qbqb.pro/2018/09/18/Java集合——集合框架汇总/&title=《Java集合——集合框架汇总》 — LQQB's Blog (ง •̀_•́)ง&source=集合是在任何语言中都是重要的基础知识，不同的集合在实现上采用了各种不同的数据结构。" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://qbqb.pro/2018/09/18/Java集合——集合框架汇总/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Java集合——集合框架汇总》 — LQQB's Blog (ง •̀_•́)ง&url=http://qbqb.pro/2018/09/18/Java集合——集合框架汇总/&via=http://qbqb.pro" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://qbqb.pro/2018/09/18/Java集合——集合框架汇总/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACOklEQVR42u3aQW7DMAwFUd//0ilQdNFFrMwn7aKmRqsgdhw9LwhS5HHg9fpe66u/F796dudxx5IhQ8ZjGa/lWt9z9vdnmLPP5OqH1yFDhowNGOsgm8JIGK29jtPvZciQIQNsggRWnmjKkCFDxlWMTl25TjRlyJAho1bE8k13itvba3EZMmQ8kJE2Bv7y8439DRkyZDyEUUvdyBPSJmhtPz/PlCFDxmjGehgiHYzoJ3C1BFSGDBmzGbyATAcmOiVuXELLkCFjNIMf+pOGZfqyaodrwViYDBkyRjNqjUwSjnnbMm4JyJAhYzQjHae4405y9IZaCDJkyBjH4ElhOvrAC9F0OOPNnTJkyNiMkZayPKKvn1YbSpMhQ8YOjCCo4Y3eEYhRK0KGDBnbMHgClxaftXQwSBxlyJCxAYMHPtLU7I9okMCNNiRDhowRjP7wxBrQaYIGwxYyZMgYyuDBrrb1+xY6NZQhQ8YIRu0QvzaRVWsMBM+UIUPGaEY6nhXMmoUlcSdJlSFDxlTGHWEubWReMGomQ4aMbRhkW52hCn54x1PVOG+VIUPGAxmdBkCn6I37FbiBKkOGjHmMznE8T93SAhi1AXiGK0OGjIcz0gDXv5oWyRdsXYYMGSMYtSBLAmL6/HXARZ1YGTJkjGZ0ithOIE6L2A8BV4YMGdszSEsgbVLW0sQ3v5UhQ4YMDCCJI29VBmFahgwZGzB4EXvVJvgWUYtUhgwZoxmd0pE3OHmbk4fsy/obMmTI+L+MLx22Rrz90QRVAAAAAElFTkSuQmCC" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: true };
+
+
+</script>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/main.min.js"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/search.min.js" async></script>
+
+
+
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+});
+</script>
+
+<script async src="//cdn.bootcss.com/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML" async></script>
+
+
+
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = '死鬼去哪里了！';
+            clearTimeout(titleTime);
+        } else {
+            document.title = '(つェ⊂)咦!又好了!';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
+
+
+
+</body>
+</html>
