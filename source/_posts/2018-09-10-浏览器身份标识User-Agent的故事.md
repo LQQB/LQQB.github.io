@@ -18,8 +18,7 @@ tags: [浏览器, 记录]
 故事还得从头说起，最初的主角叫NCSA Mosaic，简称Mosaic（马赛克），是1992年末位于伊利诺伊大学厄巴纳-香槟分校的国家超级计算机应用中心（National Center for Supercomputing Applications，简称NCSA）开发，并于1993年发布的一款浏览器。它自称“NCSA_Mosaic/2.0（Windows 3.1）”，Mosaic可以同时展示文字和图片，从此浏览器变得有趣多了。
 
 
-然而很快就出现了另一个浏览器，这就是著名的Mozilla，中文名称摩斯拉。一说 Mozilla = Mosaic + Killer，意为Mosaic杀手，也有说法是 Mozilla = Mosaic & Godzilla，意为马赛克和哥斯拉，而Mozilla最初的吉祥物是只绿色大蜥蜴，后来更改为红色暴龙，跟哥斯拉长得一样。
-但Mosaic对此非常不高兴，于是后来Mozilla更名为Netscape，也就是网景。Netscape自称“Mozilla/1.0(Win3.1)”，事情开始变得更加有趣。网景支持框架（frame），由于大家的喜欢框架变得流行起来，但是Mosaic不支持框架，于是网站管理员探测user agent，对Mozilla浏览器发送含有框架的页面，对非Mozilla浏览器发送没有框架的页面。
+然而很快就出现了另一个浏览器，这就是著名的Mozilla，中文名称摩斯拉。一说 Mozilla = Mosaic + Killer，意为Mosaic杀手，也有说法是 Mozilla = Mosaic & Godzilla，意为马赛克和哥斯拉，而Mozilla最初的吉祥物是只绿色大蜥蜴，后来更改为红色暴龙，跟哥斯拉长得一样。但Mosaic对此非常不高兴，于是后来Mozilla更名为Netscape，也就是网景。Netscape自称“Mozilla/1.0(Win3.1)”，事情开始变得更加有趣。网景支持框架（frame），由于大家的喜欢框架变得流行起来，但是Mosaic不支持框架，于是网站管理员探测user agent，对Mozilla浏览器发送含有框架的页面，对非Mozilla浏览器发送没有框架的页面。
 
 后来网景拿微软寻开心，称微软的Windows是“没有调试过的硬件驱动程序”。微软很生气，后果很严重。此后微软开发了自己的浏览器，这就是Internet Explorer，并希望它可以成为Netscape Killer。IE同样支持框架，但它不是Mozilla，所以它总是收不到含有框架的页面。微软很郁闷很快就沉不住气了，它不想等到所有的网站管理员都了解IE并且给IE发送含有框架的页面，它选择宣布IE是兼容Mozilla，并且模仿Netscape称IE为“Mozilla/1.22(compatible; MSIE 2.0; Windows 95)”，于是IE可以收到含有框架的页面了，所有微软的人都嗨皮了，但是网站管理员开始晕了。
 
