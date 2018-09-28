@@ -14,27 +14,27 @@
     
     
     
-    <title>Java集合——集合框架汇总 | LQQB&#39;s Blog (ง •̀_•́)ง | 将一个大问题分解为若干小问题，然后一个一个解决</title>
+    <title>Java集合——List类集合 | LQQB&#39;s Blog (ง •̀_•́)ง | 将一个大问题分解为若干小问题，然后一个一个解决</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
     <meta name="theme-color" content="#3F51B5">
     
     
     <meta name="keywords" content="Java">
-    <meta name="description" content="集合是在任何语言中都是重要的基础知识，不同的集合在实现上采用了各种不同的数据结构。">
-<meta name="keywords" content="Java基础,Java集合">
+    <meta name="description" content="上一章节我们总结了Java集合框架的整体结构，现在就来看看集合的第一大体系 List。">
+<meta name="keywords" content="Java">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Java集合——集合框架汇总">
-<meta property="og:url" content="http://qbqb.pro/2018/09/18/Java集合——集合框架汇总/index.html">
+<meta property="og:title" content="Java集合——List类集合">
+<meta property="og:url" content="http://qbqb.pro/2018/09/26/Java集合——List类集合/index.html">
 <meta property="og:site_name" content="LQQB&#39;s Blog (ง •̀_•́)ง">
-<meta property="og:description" content="集合是在任何语言中都是重要的基础知识，不同的集合在实现上采用了各种不同的数据结构。">
+<meta property="og:description" content="上一章节我们总结了Java集合框架的整体结构，现在就来看看集合的第一大体系 List。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="http://qbqb.pro/2018/09/18/Java集合——集合框架汇总/Java集合框架结构.png">
-<meta property="og:updated_time" content="2018-09-26T01:09:33.913Z">
+<meta property="og:image" content="http://qbqb.pro/2018/09/26/Java集合——List类集合/集合框架-List.png">
+<meta property="og:updated_time" content="2018-09-28T10:47:36.352Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Java集合——集合框架汇总">
-<meta name="twitter:description" content="集合是在任何语言中都是重要的基础知识，不同的集合在实现上采用了各种不同的数据结构。">
-<meta name="twitter:image" content="http://qbqb.pro/2018/09/18/Java集合——集合框架汇总/Java集合框架结构.png">
+<meta name="twitter:title" content="Java集合——List类集合">
+<meta name="twitter:description" content="上一章节我们总结了Java集合框架的整体结构，现在就来看看集合的第一大体系 List。">
+<meta name="twitter:image" content="http://qbqb.pro/2018/09/26/Java集合——List类集合/集合框架-List.png">
     
         <link rel="alternate" type="application/atom+xml" title="LQQB&#39;s Blog (ง •̀_•́)ง" href="../../../../atom.xml">
     
@@ -115,7 +115,7 @@
         <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
           <i class="icon icon-lg icon-navicon"></i>
         </a>
-        <div class="flex-col header-title ellipsis">Java集合——集合框架汇总</div>
+        <div class="flex-col header-title ellipsis">Java集合——List类集合</div>
         
         <div class="search-wrap" id="search-wrap">
             <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
@@ -137,11 +137,11 @@
 <header class="content-header post-header">
 
     <div class="container fade-scale">
-        <h1 class="title">Java集合——集合框架汇总</h1>
+        <h1 class="title">Java集合——List类集合</h1>
         <h5 class="subtitle">
             
-                <time datetime="2018-09-18T03:18:59.000Z" itemprop="datePublished" class="page-time">
-  2018-09-18
+                <time datetime="2018-09-26T01:34:19.000Z" itemprop="datePublished" class="page-time">
+  2018-09-26
 </time>
 
 
@@ -160,18 +160,18 @@
     <aside class="post-widget">
         <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
             <h4>TOC</h4>
-            <ol class="post-toc"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#层次关系"><span class="post-toc-number">1.</span> <span class="post-toc-text">层次关系</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#Collection-lt-E-gt"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">Collection&lt; E &gt;</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#Iterable-lt-T-gt"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">Iterable &lt; T &gt;</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#Map-lt-K-V-gt"><span class="post-toc-number">1.3.</span> <span class="post-toc-text">Map&lt;K,V&gt;</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#List-lt-E-gt-（有序、可重复）"><span class="post-toc-number">1.4.</span> <span class="post-toc-text">List&lt; E &gt;（有序、可重复）</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#Set-lt-E-gt-（无序、不能重复）"><span class="post-toc-number">1.5.</span> <span class="post-toc-text">Set&lt; E &gt;（无序、不能重复）</span></a></li></ol></li></ol>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#层次关系"><span class="post-toc-number">1.</span> <span class="post-toc-text">层次关系</span></a></li></ol>
         </nav>
     </aside>
 
 
-<article id="post-Java集合——集合框架汇总"
+<article id="post-Java集合——List类集合"
   class="post-article article-type-post fade" itemprop="blogPost">
 
     <div class="post-card">
-        <h1 class="post-card-title">Java集合——集合框架汇总</h1>
+        <h1 class="post-card-title">Java集合——List类集合</h1>
         <div class="post-meta">
-            <time class="post-time" title="2018-09-18 11:18:59" datetime="2018-09-18T03:18:59.000Z"  itemprop="datePublished">2018-09-18</time>
+            <time class="post-time" title="2018-09-26 09:34:19" datetime="2018-09-26T01:34:19.000Z"  itemprop="datePublished">2018-09-26</time>
 
             
 
@@ -184,28 +184,14 @@
 
         </div>
         <div class="post-content" id="post-content" itemprop="postContent">
-            <p>集合是在任何语言中都是重要的基础知识，不同的集合在实现上采用了各种不同的数据结构。<a id="more"></a>接下来就从Java集合框架的层次关系开始入手，来理解Java的集合框架。</p>
-<h3 id="层次关系"><a href="#层次关系" class="headerlink" title="层次关系"></a>层次关系</h3><p>一个好的框架会在设计上考虑将接口与实现分离，而 Java集合框架从接口的整体设计就可以快速明确这个框架的作用和功能。<br><figure class="image-bubble">
+            <p>上一章节我们总结了Java集合框架的整体结构，现在就来看看集合的第一大体系 List。<a id="more"></a>接下来还是要从 List 的层次结构开始入手，来理解Java的集合框架中的 List 结构。</p>
+<h3 id="层次关系"><a href="#层次关系" class="headerlink" title="层次关系"></a>层次关系</h3><figure class="image-bubble">
                 <div class="img-lightbox">
                     <div class="overlay"></div>
-                    <img src="/2018/09/18/Java集合——集合框架汇总/Java集合框架结构.png" alt="" title="">
+                    <img src="/2018/09/26/Java集合——List类集合/集合框架-List.png" alt="" title="">
                 </div>
                 <div class="image-caption"></div>
-            </figure><br>通过上面的接口框架图可以看出: Collection<e> 和 Map&lt;K,V&gt; 是java.util 框架中的两个根接口，代表了两种不同的数据结构:集合和映射。</e></p>
-<p>下面我们来分别来说下这些核心接口的基本功能:</p>
-<h4 id="Collection-lt-E-gt"><a href="#Collection-lt-E-gt" class="headerlink" title="Collection&lt; E &gt;"></a>Collection&lt; E &gt;</h4><p>Collection&lt; E &gt;接口是集合的根接口，他代表了一组元素。但是Collection<e>并不关心这组元素是否重复，是否有序。他只提供操作对这组元素的基本操作方法，怎么添加，怎么删除，怎么循环。所有的实现类都必须提供这些方法。</e></p>
-<h4 id="Iterable-lt-T-gt"><a href="#Iterable-lt-T-gt" class="headerlink" title="Iterable &lt; T &gt;"></a>Iterable &lt; T &gt;</h4><p>所有的集合类，都实现了Iterator方法<code>Iterator&lt;E&gt; iterator()</code> ，Iterator&lt; E &gt; 这是一个用于遍历集合中元素的接口，主要包含以下三种方法：</p>
-<ol>
-<li>hasNext() 是否还有下一个元素。</li>
-<li>next() 返回下一个元素。</li>
-<li>remove() 删除当前元素。</li>
-</ol>
-<h4 id="Map-lt-K-V-gt"><a href="#Map-lt-K-V-gt" class="headerlink" title="Map&lt;K,V&gt;"></a>Map&lt;K,V&gt;</h4><p>API说明上关于Map&lt;K,V&gt;的说明非常精炼：从键映射到值的一个对象，键不能重复，每个键至多映射到一个值。 从键不能重复这个特点很容易想到通过Set<e>来实现键，他的接口方法Set<k> keySet()也证明了这点</k></e></p>
-<h4 id="List-lt-E-gt-（有序、可重复）"><a href="#List-lt-E-gt-（有序、可重复）" class="headerlink" title="List&lt; E &gt;（有序、可重复）"></a>List&lt; E &gt;（有序、可重复）</h4><p>List里存放的对象是有序的，同时也是可以重复的，List关注的是索引，拥有一系列和索引相关的方法，查询速度快。因为往list集合里插入或删除数据时，会伴随着后面数据的移动，所有插入删除数据速度慢。</p>
-<h4 id="Set-lt-E-gt-（无序、不能重复）"><a href="#Set-lt-E-gt-（无序、不能重复）" class="headerlink" title="Set&lt; E &gt;（无序、不能重复）"></a>Set&lt; E &gt;（无序、不能重复）</h4><p>Set里存放的对象是无序，不能重复的，集合中的对象不按特定的方式排序，只是简单地把对象加入集合中。</p>
-<blockquote>
-<p>除了上述的接口以及抽象类以外，java.util框架还提供了一些其他结构，在使用频率上不是太高，比如Queue&lt; E &gt; ，Deque&lt; E &gt; 等。</p>
-</blockquote>
+            </figure>
 
         </div>
 
@@ -214,7 +200,7 @@
     <div class="content">
         
 <span class="post-time">
-    最后更新时间：<time datetime="2018-09-26T01:09:33.913Z" itemprop="dateUpdated">2018-09-26 09:09:33</time>
+    最后更新时间：<time datetime="2018-09-28T10:47:36.352Z" itemprop="dateUpdated">2018-09-28 18:47:36</time>
 </span><br>
 
 
@@ -248,7 +234,7 @@
 <div class="page-share" id="pageShare">
     <ul class="reset share-icons">
       <li>
-        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://qbqb.pro/2018/09/18/Java集合——集合框架汇总/&title=《Java集合——集合框架汇总》 — LQQB's Blog (ง •̀_•́)ง&pic=http://qbqb.pro/img/avatar.jpg" data-title="微博">
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://qbqb.pro/2018/09/26/Java集合——List类集合/&title=《Java集合——List类集合》 — LQQB's Blog (ง •̀_•́)ง&pic=http://qbqb.pro/img/avatar.jpg" data-title="微博">
           <i class="icon icon-weibo"></i>
         </a>
       </li>
@@ -258,22 +244,22 @@
         </a>
       </li>
       <li>
-        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://qbqb.pro/2018/09/18/Java集合——集合框架汇总/&title=《Java集合——集合框架汇总》 — LQQB's Blog (ง •̀_•́)ง&source=集合是在任何语言中都是重要的基础知识，不同的集合在实现上采用了各种不同的数据结构。" data-title=" QQ">
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://qbqb.pro/2018/09/26/Java集合——List类集合/&title=《Java集合——List类集合》 — LQQB's Blog (ง •̀_•́)ง&source=上一章节我们总结了Java集合框架的整体结构，现在就来看看集合的第一大体系 List。" data-title=" QQ">
           <i class="icon icon-qq"></i>
         </a>
       </li>
       <li>
-        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://qbqb.pro/2018/09/18/Java集合——集合框架汇总/" data-title=" Facebook">
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://qbqb.pro/2018/09/26/Java集合——List类集合/" data-title=" Facebook">
           <i class="icon icon-facebook"></i>
         </a>
       </li>
       <li>
-        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Java集合——集合框架汇总》 — LQQB's Blog (ง •̀_•́)ง&url=http://qbqb.pro/2018/09/18/Java集合——集合框架汇总/&via=http://qbqb.pro" data-title=" Twitter">
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Java集合——List类集合》 — LQQB's Blog (ง •̀_•́)ง&url=http://qbqb.pro/2018/09/26/Java集合——List类集合/&via=http://qbqb.pro" data-title=" Twitter">
           <i class="icon icon-twitter"></i>
         </a>
       </li>
       <li>
-        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://qbqb.pro/2018/09/18/Java集合——集合框架汇总/" data-title=" Google+">
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://qbqb.pro/2018/09/26/Java集合——List类集合/" data-title=" Google+">
           <i class="icon icon-google-plus"></i>
         </a>
       </li>
@@ -293,21 +279,14 @@
     </div>
 
     
-<nav class="post-nav flex-row flex-justify-between">
-  
-    <div class="waves-block waves-effect prev">
-      <a href="../../26/Java集合——List类集合/" id="post-prev" class="post-nav-link">
-        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
-        <h4 class="title">Java集合——List类集合</h4>
-      </a>
-    </div>
+<nav class="post-nav flex-row flex-justify-between flex-row-reverse">
   
 
   
     <div class="waves-block waves-effect next">
-      <a href="../../10/浏览器身份标识User-Agent的故事/" id="post-next" class="post-nav-link">
+      <a href="../../18/Java集合——集合框架汇总/" id="post-next" class="post-nav-link">
         <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
-        <h4 class="title">浏览器身份标识User-Agent的故事</h4>
+        <h4 class="title">Java集合——集合框架汇总</h4>
       </a>
     </div>
   
@@ -437,7 +416,7 @@
 <div class="global-share" id="globalShare">
     <ul class="reset share-icons">
       <li>
-        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://qbqb.pro/2018/09/18/Java集合——集合框架汇总/&title=《Java集合——集合框架汇总》 — LQQB's Blog (ง •̀_•́)ง&pic=http://qbqb.pro/img/avatar.jpg" data-title="微博">
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://qbqb.pro/2018/09/26/Java集合——List类集合/&title=《Java集合——List类集合》 — LQQB's Blog (ง •̀_•́)ง&pic=http://qbqb.pro/img/avatar.jpg" data-title="微博">
           <i class="icon icon-weibo"></i>
         </a>
       </li>
@@ -447,22 +426,22 @@
         </a>
       </li>
       <li>
-        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://qbqb.pro/2018/09/18/Java集合——集合框架汇总/&title=《Java集合——集合框架汇总》 — LQQB's Blog (ง •̀_•́)ง&source=集合是在任何语言中都是重要的基础知识，不同的集合在实现上采用了各种不同的数据结构。" data-title=" QQ">
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://qbqb.pro/2018/09/26/Java集合——List类集合/&title=《Java集合——List类集合》 — LQQB's Blog (ง •̀_•́)ง&source=上一章节我们总结了Java集合框架的整体结构，现在就来看看集合的第一大体系 List。" data-title=" QQ">
           <i class="icon icon-qq"></i>
         </a>
       </li>
       <li>
-        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://qbqb.pro/2018/09/18/Java集合——集合框架汇总/" data-title=" Facebook">
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://qbqb.pro/2018/09/26/Java集合——List类集合/" data-title=" Facebook">
           <i class="icon icon-facebook"></i>
         </a>
       </li>
       <li>
-        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Java集合——集合框架汇总》 — LQQB's Blog (ง •̀_•́)ง&url=http://qbqb.pro/2018/09/18/Java集合——集合框架汇总/&via=http://qbqb.pro" data-title=" Twitter">
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Java集合——List类集合》 — LQQB's Blog (ง •̀_•́)ง&url=http://qbqb.pro/2018/09/26/Java集合——List类集合/&via=http://qbqb.pro" data-title=" Twitter">
           <i class="icon icon-twitter"></i>
         </a>
       </li>
       <li>
-        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://qbqb.pro/2018/09/18/Java集合——集合框架汇总/" data-title=" Google+">
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://qbqb.pro/2018/09/26/Java集合——List类集合/" data-title=" Google+">
           <i class="icon icon-google-plus"></i>
         </a>
       </li>
@@ -473,7 +452,7 @@
 <div class="page-modal wx-share" id="wxShare">
     <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
-    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACOklEQVR42u3aQW7DMAwFUd//0ilQdNFFrMwn7aKmRqsgdhw9LwhS5HHg9fpe66u/F796dudxx5IhQ8ZjGa/lWt9z9vdnmLPP5OqH1yFDhowNGOsgm8JIGK29jtPvZciQIQNsggRWnmjKkCFDxlWMTl25TjRlyJAho1bE8k13itvba3EZMmQ8kJE2Bv7y8439DRkyZDyEUUvdyBPSJmhtPz/PlCFDxmjGehgiHYzoJ3C1BFSGDBmzGbyATAcmOiVuXELLkCFjNIMf+pOGZfqyaodrwViYDBkyRjNqjUwSjnnbMm4JyJAhYzQjHae4405y9IZaCDJkyBjH4ElhOvrAC9F0OOPNnTJkyNiMkZayPKKvn1YbSpMhQ8YOjCCo4Y3eEYhRK0KGDBnbMHgClxaftXQwSBxlyJCxAYMHPtLU7I9okMCNNiRDhowRjP7wxBrQaYIGwxYyZMgYyuDBrrb1+xY6NZQhQ8YIRu0QvzaRVWsMBM+UIUPGaEY6nhXMmoUlcSdJlSFDxlTGHWEubWReMGomQ4aMbRhkW52hCn54x1PVOG+VIUPGAxmdBkCn6I37FbiBKkOGjHmMznE8T93SAhi1AXiGK0OGjIcz0gDXv5oWyRdsXYYMGSMYtSBLAmL6/HXARZ1YGTJkjGZ0ithOIE6L2A8BV4YMGdszSEsgbVLW0sQ3v5UhQ4YMDCCJI29VBmFahgwZGzB4EXvVJvgWUYtUhgwZoxmd0pE3OHmbk4fsy/obMmTI+L+MLx22Rrz90QRVAAAAAElFTkSuQmCC" alt="微信分享二维码">
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACKklEQVR42u3aO7LCMAwFUPa/aV77ChKuJFPEPqkYJjg+KYQ+fr3i6317/b/n6vP9N/ffL7swMDAey8i3ePXgZBP51q/WvNobBgbGOYyrB88DaB4t7z9/WRkDAwMjXnqSLGJgYGCsYiRBc1X6iIGBgTFvpeW9r/yen9fiGBgYD2SsKjJ/8fkn8w0MDIxHMd7F6+oxvft7e/jwFAwMjK0Zk1Qvh03Gmcl+MDAw9mYkQ8dCwysecOZJYQTGwMA4gFFtac3vzI+gRWAMDIwDGL1AmRe0k1FB1HrDwMDYmrFqu8uOdhXbcxgYGOcwqildUl7mA4DqgbBlo00MDIyHMOaPScJfEljzF/ThVxgYGMcw8lBbbYpVV6sGbgwMjL0Zvc5VHiiTQJykmGUABgbGRoy80TYJf3mh2zzwgYGBcQCj147PMb0hweiwBQYGxnaMecu+GiJ75XH0v4GBgbEpo9eaz49/JaE5r7Avi1gMDIxNGZPEbrKV6mghGotiYGAcwIiC2tIhQZI+FjAYGBgHMOajxFVlcJOHgYFxACNP13Le5LBFkla+kjkGBgbGwxnv4lUF5KVp9VViYGCcw6gGuGS7STI3L5KbFwYGxmMZvXCZB8Qeo5yeYmBgHMCoBr556dsrYi9/hYGBgdE6AJEPG/LVKo1EDAyMcxnVIxHzwUB0BA0DA+MARlLEfllonFYmYfpLaoiBgbEpo3dGozdivC9i81fTnHhgYGA8j/EHpzRgvvVwlPEAAAAASUVORK5CYII=" alt="微信分享二维码">
 </div>
 
 

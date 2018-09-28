@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://qbqb.pro/"/>
-  <updated>2018-09-18T07:19:59.125Z</updated>
+  <updated>2018-09-28T10:47:36.352Z</updated>
   <id>http://qbqb.pro/</id>
   
   <author>
@@ -17,13 +17,33 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>Java集合——List类集合</title>
+    <link href="http://qbqb.pro/2018/09/26/Java%E9%9B%86%E5%90%88%E2%80%94%E2%80%94List%E7%B1%BB%E9%9B%86%E5%90%88/"/>
+    <id>http://qbqb.pro/2018/09/26/Java集合——List类集合/</id>
+    <published>2018-09-26T01:34:19.000Z</published>
+    <updated>2018-09-28T10:47:36.352Z</updated>
+    
+    <content type="html"><![CDATA[<p>上一章节我们总结了Java集合框架的整体结构，现在就来看看集合的第一大体系 List。<a id="more"></a>接下来还是要从 List 的层次结构开始入手，来理解Java的集合框架中的 List 结构。</p><h3 id="层次关系"><a href="#层次关系" class="headerlink" title="层次关系"></a>层次关系</h3><figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="/2018/09/26/Java集合——List类集合/集合框架-List.png" alt="" title="">                </div>                <div class="image-caption"></div>            </figure>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;上一章节我们总结了Java集合框架的整体结构，现在就来看看集合的第一大体系 List。&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="Java" scheme="http://qbqb.pro/tags/Java/"/>
+    
+  </entry>
+  
+  <entry>
     <title>Java集合——集合框架汇总</title>
     <link href="http://qbqb.pro/2018/09/18/Java%E9%9B%86%E5%90%88%E2%80%94%E2%80%94%E9%9B%86%E5%90%88%E6%A1%86%E6%9E%B6%E6%B1%87%E6%80%BB/"/>
     <id>http://qbqb.pro/2018/09/18/Java集合——集合框架汇总/</id>
     <published>2018-09-18T03:18:59.000Z</published>
-    <updated>2018-09-18T07:19:59.125Z</updated>
+    <updated>2018-09-26T01:09:33.913Z</updated>
     
-    <content type="html"><![CDATA[<p>集合是在任何语言中都是重要的基础知识，不同的集合在实现上采用了各种不同的数据结构。<a id="more"></a>接下来就从Java集合框架的层次关系开始入手，来理解Java的集合框架。</p><h3 id="层次关系"><a href="#层次关系" class="headerlink" title="层次关系"></a>层次关系</h3><p>一个好的框架会在设计上考虑将接口与实现分离，而 Java集合框架从接口的整体设计就可以快速明确这个框架的作用和功能。<br><figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="/2018/09/18/Java集合——集合框架汇总/Java集合框架结构.png" alt="" title="">                </div>                <div class="image-caption"></div>            </figure><br>通过上面的接口框架图可以看出: Collection<e> 和 Map&lt;K,V&gt; 是java.util 框架中的两个根接口，代表了两种不同的数据结构:集合和映射。</e></p><p>下面我们来分别来说下这些核心接口的基本功能:</p><h4 id="Collection-lt-E-gt"><a href="#Collection-lt-E-gt" class="headerlink" title="Collection&lt; E &gt;"></a>Collection&lt; E &gt;</h4><p>Collection&lt; E &gt;接口是集合的根接口，他代表了一组元素。但是Collection<e>并不关心这组元素是否重复，是否有序。他只提供操作对这组元素的基本操作方法，怎么添加，怎么删除，怎么循环。所有的实现类都必须提供这些方法。</e></p><h4 id="Iterable"><a href="#Iterable" class="headerlink" title="Iterable"></a>Iterable<t></t></h4><p>所有的集合类，都实现了Iterator方法<code>Iterator&lt;E&gt; iterator()</code> ，Iterator&lt; E &gt; 这是一个用于遍历集合中元素的接口，主要包含以下三种方法：</p><ol><li>hasNext() 是否还有下一个元素。</li><li>next() 返回下一个元素。</li><li>remove() 删除当前元素。</li></ol><h4 id="Map-lt-K-V-gt"><a href="#Map-lt-K-V-gt" class="headerlink" title="Map&lt;K,V&gt;"></a>Map&lt;K,V&gt;</h4><p>API说明上关于Map&lt;K,V&gt;的说明非常精炼：从键映射到值的一个对象，键不能重复，每个键至多映射到一个值。 从键不能重复这个特点很容易想到通过Set<e>来实现键，他的接口方法Set<k> keySet()也证明了这点</k></e></p><h4 id="List-lt-E-gt-（有序、可重复）"><a href="#List-lt-E-gt-（有序、可重复）" class="headerlink" title="List&lt; E &gt;（有序、可重复）"></a>List&lt; E &gt;（有序、可重复）</h4><p>List里存放的对象是有序的，同时也是可以重复的，List关注的是索引，拥有一系列和索引相关的方法，查询速度快。因为往list集合里插入或删除数据时，会伴随着后面数据的移动，所有插入删除数据速度慢。</p><h4 id="Set-lt-E-gt-（无序、不能重复）"><a href="#Set-lt-E-gt-（无序、不能重复）" class="headerlink" title="Set&lt; E &gt;（无序、不能重复）"></a>Set&lt; E &gt;（无序、不能重复）</h4><p>Set里存放的对象是无序，不能重复的，集合中的对象不按特定的方式排序，只是简单地把对象加入集合中。</p><blockquote><p>除了上述的接口以及抽象类以外，java.util框架还提供了一些其他结构，在使用频率上不是太高，比如Queue&lt; E &gt; ，Deque&lt; E &gt; 等。</p></blockquote>]]></content>
+    <content type="html"><![CDATA[<p>集合是在任何语言中都是重要的基础知识，不同的集合在实现上采用了各种不同的数据结构。<a id="more"></a>接下来就从Java集合框架的层次关系开始入手，来理解Java的集合框架。</p><h3 id="层次关系"><a href="#层次关系" class="headerlink" title="层次关系"></a>层次关系</h3><p>一个好的框架会在设计上考虑将接口与实现分离，而 Java集合框架从接口的整体设计就可以快速明确这个框架的作用和功能。<br><figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="/2018/09/18/Java集合——集合框架汇总/Java集合框架结构.png" alt="" title="">                </div>                <div class="image-caption"></div>            </figure><br>通过上面的接口框架图可以看出: Collection<e> 和 Map&lt;K,V&gt; 是java.util 框架中的两个根接口，代表了两种不同的数据结构:集合和映射。</e></p><p>下面我们来分别来说下这些核心接口的基本功能:</p><h4 id="Collection-lt-E-gt"><a href="#Collection-lt-E-gt" class="headerlink" title="Collection&lt; E &gt;"></a>Collection&lt; E &gt;</h4><p>Collection&lt; E &gt;接口是集合的根接口，他代表了一组元素。但是Collection<e>并不关心这组元素是否重复，是否有序。他只提供操作对这组元素的基本操作方法，怎么添加，怎么删除，怎么循环。所有的实现类都必须提供这些方法。</e></p><h4 id="Iterable-lt-T-gt"><a href="#Iterable-lt-T-gt" class="headerlink" title="Iterable &lt; T &gt;"></a>Iterable &lt; T &gt;</h4><p>所有的集合类，都实现了Iterator方法<code>Iterator&lt;E&gt; iterator()</code> ，Iterator&lt; E &gt; 这是一个用于遍历集合中元素的接口，主要包含以下三种方法：</p><ol><li>hasNext() 是否还有下一个元素。</li><li>next() 返回下一个元素。</li><li>remove() 删除当前元素。</li></ol><h4 id="Map-lt-K-V-gt"><a href="#Map-lt-K-V-gt" class="headerlink" title="Map&lt;K,V&gt;"></a>Map&lt;K,V&gt;</h4><p>API说明上关于Map&lt;K,V&gt;的说明非常精炼：从键映射到值的一个对象，键不能重复，每个键至多映射到一个值。 从键不能重复这个特点很容易想到通过Set<e>来实现键，他的接口方法Set<k> keySet()也证明了这点</k></e></p><h4 id="List-lt-E-gt-（有序、可重复）"><a href="#List-lt-E-gt-（有序、可重复）" class="headerlink" title="List&lt; E &gt;（有序、可重复）"></a>List&lt; E &gt;（有序、可重复）</h4><p>List里存放的对象是有序的，同时也是可以重复的，List关注的是索引，拥有一系列和索引相关的方法，查询速度快。因为往list集合里插入或删除数据时，会伴随着后面数据的移动，所有插入删除数据速度慢。</p><h4 id="Set-lt-E-gt-（无序、不能重复）"><a href="#Set-lt-E-gt-（无序、不能重复）" class="headerlink" title="Set&lt; E &gt;（无序、不能重复）"></a>Set&lt; E &gt;（无序、不能重复）</h4><p>Set里存放的对象是无序，不能重复的，集合中的对象不按特定的方式排序，只是简单地把对象加入集合中。</p><blockquote><p>除了上述的接口以及抽象类以外，java.util框架还提供了一些其他结构，在使用频率上不是太高，比如Queue&lt; E &gt; ，Deque&lt; E &gt; 等。</p></blockquote>]]></content>
     
     <summary type="html">
     
@@ -94,9 +114,9 @@
     </summary>
     
     
-      <category term="Java" scheme="http://qbqb.pro/tags/Java/"/>
-    
       <category term="Spring" scheme="http://qbqb.pro/tags/Spring/"/>
+    
+      <category term="Java" scheme="http://qbqb.pro/tags/Java/"/>
     
       <category term="SpringSecurity" scheme="http://qbqb.pro/tags/SpringSecurity/"/>
     
