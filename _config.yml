@@ -86,6 +86,8 @@ theme: indigo
 ## Docs: https://hexo.io/docs/deployment.html
 deploy:
   type: git
-  repository:
-    github: https://github.com/LQQB/LQQB.github.io.git
-    coding: https://git.coding.net/LQQB/LQQB.coding.me.git
+  repo: https://github.com/LQQB/LQQB.github.io.git
+
+  # repository:
+  #   github: https://github.com/LQQB/LQQB.github.io.git
+  #   coding: https://git.coding.net/LQQB/LQQB.coding.me.git
